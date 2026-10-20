@@ -1,0 +1,926 @@
+{
+  "2": {
+    "class_type": "CLIPLoader",
+    "inputs": {
+      "clip_name": "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+      "type": "minimax",
+      "device": "default"
+    },
+    "_meta": {
+      "title": "Load H3 Text Encoder"
+    }
+  },
+  "3": {
+    "class_type": "UNETLoader",
+    "inputs": {
+      "unet_name": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+      "weight_dtype": "default"
+    },
+    "_meta": {
+      "title": "Selected H3 FL2VA model (kept)"
+    }
+  },
+  "4": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_video_vae_fp16.safetensors"
+    },
+    "_meta": {
+      "title": "Load Video VAE"
+    }
+  },
+  "5": {
+    "class_type": "VAELoader",
+    "inputs": {
+      "vae_name": "minimax_h3_audio_vae_fp32.safetensors"
+    },
+    "_meta": {
+      "title": "Load Audio VAE"
+    }
+  },
+  "6": {
+    "class_type": "MiniMaxH3SigmaShift",
+    "inputs": {
+      "model": [
+        "7",
+        0
+      ],
+      "shift_video": 12,
+      "shift_audio": 3
+    },
+    "_meta": {
+      "title": "H3 Sigma Shift"
+    }
+  },
+  "90": {
+    "class_type": "H3R2VCameraTimeline",
+    "inputs": {
+      "source_video": "",
+      "camera_plan_json": "{\n  \"segments\": [\n    {\"start_frame\": 0, \"end_frame\": 124, \"shot\": \"wide shot\", \"movement\": \"slow dolly in\", \"speed\": \"slow\", \"strength\": 0.35},\n    {\"start_frame\": 124, \"end_frame\": 248, \"shot\": \"medium shot\", \"movement\": \"smooth tracking shot\", \"speed\": \"moderate\", \"strength\": 0.45},\n    {\"start_frame\": 248, \"end_frame\": 372, \"shot\": \"close-up\", \"movement\": \"static camera\", \"speed\": \"very slow\", \"strength\": 0.20}\n  ]\n}",
+      "source_fps": 24,
+      "edit_strength": 0.95,
+      "expected_segments": 3,
+      "lora_name": "minimax\\minimax_h3_fl2v_turbo_8step_v1.0_comfyui_bf16.safetensors",
+      "lora_strength": 1.0,
+      "sage_enabled": true,
+      "spectrum_enabled": false,
+      "steps": 8,
+      "aspect_ratio": "source",
+      "megapixels": 0.5,
+      "custom_width": 960,
+      "custom_height": 544,
+      "lip_sync_strict": true
+    },
+    "_meta": {
+      "title": "R2V TIMELINE DIRECTOR · UPLOAD SOURCE HERE"
+    }
+  },
+  "100": {
+    "class_type": "H3R2VCameraLipLock",
+    "inputs": {
+      "images": [
+        "90",
+        0
+      ],
+      "audio": [
+        "90",
+        1
+      ],
+      "video_info": [
+        "90",
+        3
+      ],
+      "camera_plan": [
+        "90",
+        2
+      ],
+      "segment_index": 0,
+      "segment_frames": 124,
+      "camera_plan_json": "{\n  \"segments\": [\n    {\"start_frame\": 0, \"end_frame\": 124, \"shot\": \"wide shot\", \"movement\": \"slow dolly in\", \"speed\": \"slow\", \"strength\": 0.35},\n    {\"start_frame\": 124, \"end_frame\": 248, \"shot\": \"medium shot\", \"movement\": \"smooth tracking shot\", \"speed\": \"moderate\", \"strength\": 0.45},\n    {\"start_frame\": 248, \"end_frame\": 372, \"shot\": \"close-up\", \"movement\": \"static camera\", \"speed\": \"very slow\", \"strength\": 0.20}\n  ]\n}",
+      "camera_shot": "wide shot",
+      "camera_movement": "slow dolly in",
+      "camera_speed": "slow",
+      "camera_strength": 0.35,
+      "lip_lock_strength": 0.98,
+      "source_fps": 24
+    },
+    "_meta": {
+      "title": "Source segment / camera instruction"
+    }
+  },
+  "110": {
+    "class_type": "MiniMaxH3ReferenceToVideo",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "audio_vae": [
+        "5",
+        0
+      ],
+      "prompt": "Per-segment camera prompt is injected automatically when queued.",
+      "width": [
+        "90",
+        6
+      ],
+      "height": [
+        "90",
+        7
+      ],
+      "length": 124,
+      "ref_image_size": "match",
+      "ref_images.ref_image_0": [
+        "1009",
+        0
+      ],
+      "ref_videos.ref_video_0": [
+        "100",
+        0
+      ],
+      "ref_video_audios.ref_video_audio_0": [
+        "100",
+        1
+      ]
+    },
+    "_meta": {
+      "title": "FULL REFERENCE · empty target camera"
+    }
+  },
+  "111": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "6",
+        0
+      ],
+      "conditioning": [
+        "1018",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "Guide 1"
+    }
+  },
+  "112": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 1001
+    },
+    "_meta": {
+      "title": "Seed 1"
+    }
+  },
+  "113": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "6",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": [
+        "90",
+        9
+      ],
+      "denoise": [
+        "90",
+        5
+      ]
+    },
+    "_meta": {
+      "title": "Scheduler 1"
+    }
+  },
+  "114": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    },
+    "_meta": {
+      "title": "Sampler 1"
+    }
+  },
+  "115": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "112",
+        0
+      ],
+      "guider": [
+        "111",
+        0
+      ],
+      "sampler": [
+        "114",
+        0
+      ],
+      "sigmas": [
+        "113",
+        0
+      ],
+      "latent_image": [
+        "110",
+        1
+      ]
+    },
+    "_meta": {
+      "title": "Sample 1"
+    }
+  },
+  "116": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "115",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "Decode 1"
+    }
+  },
+  "120": {
+    "class_type": "H3R2VCameraLipLock",
+    "inputs": {
+      "images": [
+        "90",
+        0
+      ],
+      "audio": [
+        "90",
+        1
+      ],
+      "video_info": [
+        "90",
+        3
+      ],
+      "camera_plan": [
+        "90",
+        2
+      ],
+      "segment_index": 1,
+      "segment_frames": 124,
+      "camera_plan_json": "{\n  \"segments\": [\n    {\"start_frame\": 0, \"end_frame\": 124, \"shot\": \"wide shot\", \"movement\": \"slow dolly in\", \"speed\": \"slow\", \"strength\": 0.35},\n    {\"start_frame\": 124, \"end_frame\": 248, \"shot\": \"medium shot\", \"movement\": \"smooth tracking shot\", \"speed\": \"moderate\", \"strength\": 0.45},\n    {\"start_frame\": 248, \"end_frame\": 372, \"shot\": \"close-up\", \"movement\": \"static camera\", \"speed\": \"very slow\", \"strength\": 0.20}\n  ]\n}",
+      "camera_shot": "medium shot",
+      "camera_movement": "smooth tracking shot",
+      "camera_speed": "moderate",
+      "camera_strength": 0.45,
+      "lip_lock_strength": 0.98,
+      "source_fps": 24
+    },
+    "_meta": {
+      "title": "Source segment / camera instruction"
+    }
+  },
+  "121": {
+    "class_type": "MiniMaxH3ReferenceToVideo",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "audio_vae": [
+        "5",
+        0
+      ],
+      "prompt": "Per-segment camera prompt is injected automatically when queued.",
+      "width": [
+        "90",
+        6
+      ],
+      "height": [
+        "90",
+        7
+      ],
+      "length": 124,
+      "ref_image_size": "match",
+      "ref_images.ref_image_0": [
+        "1209",
+        0
+      ],
+      "ref_videos.ref_video_0": [
+        "120",
+        0
+      ],
+      "ref_video_audios.ref_video_audio_0": [
+        "120",
+        1
+      ]
+    },
+    "_meta": {
+      "title": "FULL REFERENCE · empty target camera"
+    }
+  },
+  "122": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "6",
+        0
+      ],
+      "conditioning": [
+        "1218",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "Guide 2"
+    }
+  },
+  "123": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 1002
+    },
+    "_meta": {
+      "title": "Seed 2"
+    }
+  },
+  "124": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "6",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": [
+        "90",
+        9
+      ],
+      "denoise": [
+        "90",
+        5
+      ]
+    },
+    "_meta": {
+      "title": "Scheduler 2"
+    }
+  },
+  "125": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    },
+    "_meta": {
+      "title": "Sampler 2"
+    }
+  },
+  "126": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "123",
+        0
+      ],
+      "guider": [
+        "122",
+        0
+      ],
+      "sampler": [
+        "125",
+        0
+      ],
+      "sigmas": [
+        "124",
+        0
+      ],
+      "latent_image": [
+        "121",
+        1
+      ]
+    },
+    "_meta": {
+      "title": "Sample 2"
+    }
+  },
+  "127": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "126",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "Decode 2"
+    }
+  },
+  "130": {
+    "class_type": "H3R2VCameraLipLock",
+    "inputs": {
+      "images": [
+        "90",
+        0
+      ],
+      "audio": [
+        "90",
+        1
+      ],
+      "video_info": [
+        "90",
+        3
+      ],
+      "camera_plan": [
+        "90",
+        2
+      ],
+      "segment_index": 2,
+      "segment_frames": 124,
+      "camera_plan_json": "{\n  \"segments\": [\n    {\"start_frame\": 0, \"end_frame\": 124, \"shot\": \"wide shot\", \"movement\": \"slow dolly in\", \"speed\": \"slow\", \"strength\": 0.35},\n    {\"start_frame\": 124, \"end_frame\": 248, \"shot\": \"medium shot\", \"movement\": \"smooth tracking shot\", \"speed\": \"moderate\", \"strength\": 0.45},\n    {\"start_frame\": 248, \"end_frame\": 372, \"shot\": \"close-up\", \"movement\": \"static camera\", \"speed\": \"very slow\", \"strength\": 0.20}\n  ]\n}",
+      "camera_shot": "close-up",
+      "camera_movement": "static camera",
+      "camera_speed": "very slow",
+      "camera_strength": 0.2,
+      "lip_lock_strength": 0.98,
+      "source_fps": 24
+    },
+    "_meta": {
+      "title": "Source segment / camera instruction"
+    }
+  },
+  "131": {
+    "class_type": "MiniMaxH3ReferenceToVideo",
+    "inputs": {
+      "clip": [
+        "2",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ],
+      "audio_vae": [
+        "5",
+        0
+      ],
+      "prompt": "Per-segment camera prompt is injected automatically when queued.",
+      "width": [
+        "90",
+        6
+      ],
+      "height": [
+        "90",
+        7
+      ],
+      "length": 124,
+      "ref_image_size": "match",
+      "ref_images.ref_image_0": [
+        "1309",
+        0
+      ],
+      "ref_videos.ref_video_0": [
+        "130",
+        0
+      ],
+      "ref_video_audios.ref_video_audio_0": [
+        "130",
+        1
+      ]
+    },
+    "_meta": {
+      "title": "FULL REFERENCE · empty target camera"
+    }
+  },
+  "132": {
+    "class_type": "BasicGuider",
+    "inputs": {
+      "model": [
+        "6",
+        0
+      ],
+      "conditioning": [
+        "1318",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "Guide 3"
+    }
+  },
+  "133": {
+    "class_type": "RandomNoise",
+    "inputs": {
+      "noise_seed": 1003
+    },
+    "_meta": {
+      "title": "Seed 3"
+    }
+  },
+  "134": {
+    "class_type": "BasicScheduler",
+    "inputs": {
+      "model": [
+        "6",
+        0
+      ],
+      "scheduler": "simple",
+      "steps": [
+        "90",
+        9
+      ],
+      "denoise": [
+        "90",
+        5
+      ]
+    },
+    "_meta": {
+      "title": "Scheduler 3"
+    }
+  },
+  "135": {
+    "class_type": "KSamplerSelect",
+    "inputs": {
+      "sampler_name": "res_multistep"
+    },
+    "_meta": {
+      "title": "Sampler 3"
+    }
+  },
+  "136": {
+    "class_type": "SamplerCustomAdvanced",
+    "inputs": {
+      "noise": [
+        "133",
+        0
+      ],
+      "guider": [
+        "132",
+        0
+      ],
+      "sampler": [
+        "135",
+        0
+      ],
+      "sigmas": [
+        "134",
+        0
+      ],
+      "latent_image": [
+        "131",
+        1
+      ]
+    },
+    "_meta": {
+      "title": "Sample 3"
+    }
+  },
+  "137": {
+    "class_type": "VAEDecode",
+    "inputs": {
+      "samples": [
+        "136",
+        0
+      ],
+      "vae": [
+        "4",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "Decode 3"
+    }
+  },
+  "200": {
+    "class_type": "ImageBatch",
+    "inputs": {
+      "image1": [
+        "117",
+        0
+      ],
+      "image2": [
+        "128",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "ASSEMBLE SEGMENTS 1 + 2"
+    }
+  },
+  "201": {
+    "class_type": "ImageBatch",
+    "inputs": {
+      "image1": [
+        "200",
+        0
+      ],
+      "image2": [
+        "138",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "ASSEMBLE SEGMENTS 1 + 2 + 3"
+    }
+  },
+  "202": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "201",
+        0
+      ],
+      "fps": [
+        "90",
+        4
+      ],
+      "audio": [
+        "205",
+        0
+      ],
+      "bit_depth": 8
+    },
+    "_meta": {
+      "title": "CREATE VIDEO · ORIGINAL AUDIO"
+    }
+  },
+  "203": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "202",
+        0
+      ],
+      "filename_prefix": "h3_r2v_camera_lip_lock/source_audio",
+      "format": "auto",
+      "codec": "auto"
+    },
+    "_meta": {
+      "title": "SAVE · SOURCE AUDIO PASSTHROUGH"
+    }
+  },
+  "7": {
+    "class_type": "H3CameraModelOptions",
+    "inputs": {
+      "model": [
+        "3",
+        0
+      ],
+      "settings": [
+        "90",
+        8
+      ]
+    },
+    "_meta": {
+      "title": "R2V 8-Step LoRA / Sage / Spectrum"
+    }
+  },
+  "1008": {
+    "class_type": "H3FaceTrackCrop",
+    "inputs": {
+      "images": [
+        "100",
+        0
+      ],
+      "detector": "face_yolov8m.pt",
+      "confidence": 0.35,
+      "crop_factor": 2.5,
+      "canvas_width": 512,
+      "canvas_height": 512,
+      "canvas_mode": "manual",
+      "smooth_window": 21,
+      "size_smooth_window": 51,
+      "smooth_method": "gaussian",
+      "size_mode": "per_frame",
+      "identity_track": true,
+      "identity_threshold": 0.28,
+      "select": "largest",
+      "fallback_detector": "none",
+      "fallback_head_frac": 0.5
+    },
+    "_meta": {
+      "title": "Identity crop · composition removed"
+    }
+  },
+  "1009": {
+    "class_type": "ImageFromBatch",
+    "inputs": {
+      "image": [
+        "1008",
+        0
+      ],
+      "batch_index": 0,
+      "length": 1
+    },
+    "_meta": {
+      "title": "Per-segment identity anchor"
+    }
+  },
+  "1018": {
+    "class_type": "H3CameraReferenceBalance",
+    "inputs": {
+      "conditioning": [
+        "110",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "RELEASE SOURCE CAMERA · keep motion semantics + audio"
+    }
+  },
+  "117": {
+    "class_type": "H3CameraTrimClip",
+    "inputs": {
+      "images": [
+        "116",
+        0
+      ],
+      "source_frames": [
+        "100",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "Remove padding / keep source duration"
+    }
+  },
+  "1208": {
+    "class_type": "H3FaceTrackCrop",
+    "inputs": {
+      "images": [
+        "120",
+        0
+      ],
+      "detector": "face_yolov8m.pt",
+      "confidence": 0.35,
+      "crop_factor": 2.5,
+      "canvas_width": 512,
+      "canvas_height": 512,
+      "canvas_mode": "manual",
+      "smooth_window": 21,
+      "size_smooth_window": 51,
+      "smooth_method": "gaussian",
+      "size_mode": "per_frame",
+      "identity_track": true,
+      "identity_threshold": 0.28,
+      "select": "largest",
+      "fallback_detector": "none",
+      "fallback_head_frac": 0.5
+    },
+    "_meta": {
+      "title": "Identity crop · composition removed"
+    }
+  },
+  "1209": {
+    "class_type": "ImageFromBatch",
+    "inputs": {
+      "image": [
+        "1208",
+        0
+      ],
+      "batch_index": 0,
+      "length": 1
+    },
+    "_meta": {
+      "title": "Per-segment identity anchor"
+    }
+  },
+  "1218": {
+    "class_type": "H3CameraReferenceBalance",
+    "inputs": {
+      "conditioning": [
+        "121",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "RELEASE SOURCE CAMERA · keep motion semantics + audio"
+    }
+  },
+  "128": {
+    "class_type": "H3CameraTrimClip",
+    "inputs": {
+      "images": [
+        "127",
+        0
+      ],
+      "source_frames": [
+        "120",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "Remove padding / keep source duration"
+    }
+  },
+  "1308": {
+    "class_type": "H3FaceTrackCrop",
+    "inputs": {
+      "images": [
+        "130",
+        0
+      ],
+      "detector": "face_yolov8m.pt",
+      "confidence": 0.35,
+      "crop_factor": 2.5,
+      "canvas_width": 512,
+      "canvas_height": 512,
+      "canvas_mode": "manual",
+      "smooth_window": 21,
+      "size_smooth_window": 51,
+      "smooth_method": "gaussian",
+      "size_mode": "per_frame",
+      "identity_track": true,
+      "identity_threshold": 0.28,
+      "select": "largest",
+      "fallback_detector": "none",
+      "fallback_head_frac": 0.5
+    },
+    "_meta": {
+      "title": "Identity crop · composition removed"
+    }
+  },
+  "1309": {
+    "class_type": "ImageFromBatch",
+    "inputs": {
+      "image": [
+        "1308",
+        0
+      ],
+      "batch_index": 0,
+      "length": 1
+    },
+    "_meta": {
+      "title": "Per-segment identity anchor"
+    }
+  },
+  "1318": {
+    "class_type": "H3CameraReferenceBalance",
+    "inputs": {
+      "conditioning": [
+        "131",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "RELEASE SOURCE CAMERA · keep motion semantics + audio"
+    }
+  },
+  "138": {
+    "class_type": "H3CameraTrimClip",
+    "inputs": {
+      "images": [
+        "137",
+        0
+      ],
+      "source_frames": [
+        "130",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "Remove padding / keep source duration"
+    }
+  },
+  "204": {
+    "class_type": "H3CameraAudioJoin",
+    "inputs": {
+      "audio1": [
+        "100",
+        1
+      ],
+      "audio2": [
+        "120",
+        1
+      ]
+    },
+    "_meta": {
+      "title": "Join original segment audio 1+2"
+    }
+  },
+  "205": {
+    "class_type": "H3CameraAudioJoin",
+    "inputs": {
+      "audio1": [
+        "204",
+        0
+      ],
+      "audio2": [
+        "130",
+        1
+      ]
+    },
+    "_meta": {
+      "title": "Join original segment audio 1+2+3"
+    }
+  }
+}

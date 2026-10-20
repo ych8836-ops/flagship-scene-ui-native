@@ -1,0 +1,26 @@
+subject_definitions:
+<Subject 1> (S1) is the same adult performer whose face, hair and wardrobe are established by <Picture 1> and <Video 1>.
+<Picture 1> is the opening face crop from the target camera shot, defining its viewpoint, framing and illumination.
+<Video 1> is the tracked face crop of the original performance. It provides the exact time-varying mouth articulation and facial identity, not a new camera path.
+<Audio 1> is the intentionally enabled original soundtrack synchronized to <Video 1>.
+
+summary:
+[keyframe completion + reference generation + audio reuse] Correct the speaking face in the target shot while retaining its camera viewpoint and copying the existing original soundtrack.
+
+retention_analysis:
+<Subject 1>: fully_preserved - retain the same facial identity, hair, wardrobe and natural expressions.
+<Picture 1>: partially_preserved - retain the target camera viewpoint and lighting while correcting mouth articulation.
+<Video 1>: partially_preserved - use its exact articulation timing and face identity; retain the target viewpoint instead of its source framing.
+<Audio 1>: fully_copy - preserve the original waveform and syllable timing.
+
+detailed_description:
+Photorealistic close face footage in the existing light and colors. Exactly one featured woman is present.
+[Shot 1] The existing {duration}-second shot begins with the viewpoint in <Picture 1>. Keep the target crop's head orientation, hair silhouette, existing occlusions, facial proportions and eye direction. Maintain its framing without additional camera movement.
+Across local time 0.000–{duration}s, <Subject 1> (S1) speaks once in {language} using the words already recorded in <Audio 1>: <d>[{language}] {dialogue}</d> Follow each phoneme's actual onset, duration and pause in <Audio 1>, with the corresponding mouth motion in <Video 1> at the same local time. No new performance, words or extra laughter.
+Correct the lips, jaw and subtle speaking expressions rather than preserving incorrectly timed mouth motion. Keep natural small mouth shapes. Keep hair, skin identity, lighting and any part obscured by the phone stable. Preserve the occluding object's real boundaries; never paint a mouth on top of it. End on the source performance's existing final expression.
+
+overall_soundscape:
+Use only the complete existing dialogue and sound from <Audio 1> at their original timing.
+
+non_diegetic_music:
+N/A

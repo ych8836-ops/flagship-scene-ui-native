@@ -1,0 +1,82 @@
+[
+  {
+    "folder": "ComfyUI-Endless-H3-AllInOne",
+    "group": "studio",
+    "files": 36,
+    "bytes": 5750374,
+    "upstream_revision": null,
+    "source": "installed native snapshot; documentation refreshed; optional VAE diagnostic fallback made portable"
+  },
+  {
+    "folder": "ComfyUI-Endless-H3-v15-Context",
+    "group": "context",
+    "files": 5,
+    "bytes": 102849,
+    "upstream_revision": null,
+    "source": "installed native snapshot; documentation refreshed; optional VAE diagnostic fallback made portable"
+  },
+  {
+    "folder": "ComfyUI-H3-R2V-CameraLipLock",
+    "group": "camera",
+    "files": 20,
+    "bytes": 310747,
+    "upstream_revision": null,
+    "source": "installed native snapshot; documentation refreshed; optional VAE diagnostic fallback made portable"
+  },
+  {
+    "folder": "ComfyUI-Flagship-Camera-Guide",
+    "group": "camera",
+    "files": 24,
+    "bytes": 196519,
+    "upstream_revision": null,
+    "source": "installed native snapshot; documentation refreshed; optional VAE diagnostic fallback made portable"
+  },
+  {
+    "folder": "ComfyUI-noEmbryo",
+    "group": "upstream",
+    "files": 9,
+    "bytes": 246369,
+    "upstream_revision": null,
+    "source": "installed native snapshot; documentation refreshed; optional VAE diagnostic fallback made portable"
+  },
+  {
+    "folder": "comfyui-kjnodes",
+    "group": "upstream",
+    "files": 60,
+    "bytes": 2575373,
+    "upstream_revision": null,
+    "source": "installed native snapshot; documentation refreshed; optional VAE diagnostic fallback made portable"
+  },
+  {
+    "folder": "comfyui-videohelpersuite",
+    "group": "upstream",
+    "files": 34,
+    "bytes": 354409,
+    "upstream_revision": null,
+    "source": "installed native snapshot; documentation refreshed; optional VAE diagnostic fallback made portable"
+  },
+  {
+    "folder": "ComfyUI-H3-FaceRefine",
+    "group": "upstream",
+    "files": 9,
+    "bytes": 107892,
+    "upstream_revision": null,
+    "source": "installed native snapshot; documentation refreshed; optional VAE diagnostic fallback made portable"
+  },
+  {
+    "folder": "ComfyUI-RTX-Video-Restoration",
+    "group": "upscale",
+    "files": 8,
+    "bytes": 221778,
+    "upstream_revision": null,
+    "source": "installed native snapshot; documentation refreshed; optional VAE diagnostic fallback made portable"
+  },
+  {
+    "folder": "ComfyUI-Spectrum-MiniMax-H3",
+    "group": "optional-spectrum",
+    "files": 61,
+    "bytes": 1329212,
+    "upstream_revision": null,
+    "source": "installed native snapshot; documentation refreshed; optional VAE diagnostic fallback made portable"
+  }
+]

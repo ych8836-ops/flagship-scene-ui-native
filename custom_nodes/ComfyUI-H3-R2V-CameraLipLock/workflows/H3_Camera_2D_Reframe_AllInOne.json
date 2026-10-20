@@ -1,0 +1,1241 @@
+{
+  "last_node_id": 242,
+  "last_link_id": 36,
+  "nodes": [
+    {
+      "id": 90,
+      "type": "H3R2VCameraTimeline",
+      "pos": [
+        30,
+        40
+      ],
+      "size": [
+        1200,
+        760
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": [
+            1,
+            5,
+            9
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "links": [
+            2,
+            6,
+            10
+          ],
+          "slot_index": 1
+        },
+        {
+          "name": "camera_plan",
+          "type": "STRING",
+          "links": [
+            4,
+            8,
+            12
+          ],
+          "slot_index": 2
+        },
+        {
+          "name": "video_info",
+          "type": "VHS_VIDEOINFO",
+          "links": [
+            3,
+            7,
+            11
+          ],
+          "slot_index": 3
+        },
+        {
+          "name": "fps",
+          "type": "FLOAT",
+          "links": [
+            18
+          ],
+          "slot_index": 4
+        },
+        {
+          "name": "edit_strength",
+          "type": "FLOAT",
+          "links": [],
+          "slot_index": 5
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "links": [
+            27,
+            31,
+            35
+          ],
+          "slot_index": 6
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "links": [
+            28,
+            32,
+            36
+          ],
+          "slot_index": 7
+        },
+        {
+          "name": "model_settings",
+          "type": "H3_CAMERA_SETTINGS",
+          "links": [],
+          "slot_index": 8
+        },
+        {
+          "name": "steps",
+          "type": "INT",
+          "links": [],
+          "slot_index": 9
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "H3R2VCameraTimeline",
+        "h3Camera2D": true,
+        "h3CameraStudio": true
+      },
+      "widgets_values": [
+        "",
+        "{\"segments\":[{\"start_frame\":0,\"end_frame\":81,\"shot\":\"wide shot\",\"movement\":\"slow dolly in\",\"speed\":\"moderate\",\"strength\":0.65,\"center_x\":0.5,\"center_y\":0.35},{\"start_frame\":81,\"end_frame\":162,\"shot\":\"medium shot\",\"movement\":\"slow pan right\",\"speed\":\"moderate\",\"strength\":0.5,\"center_x\":0.5,\"center_y\":0.3},{\"start_frame\":162,\"end_frame\":243,\"shot\":\"close-up\",\"movement\":\"static camera\",\"speed\":\"slow\",\"strength\":0.35,\"center_x\":0.5,\"center_y\":0.2}]}",
+        24,
+        0.35,
+        3,
+        "None",
+        1,
+        false,
+        false,
+        8,
+        "source",
+        0.5,
+        960,
+        544
+      ],
+      "title": "CAMERA 2D · Upload / Timeline / Actual Reframe"
+    },
+    {
+      "id": 100,
+      "type": "H3R2VCameraLipLock",
+      "pos": [
+        850,
+        310
+      ],
+      "size": [
+        280,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 1
+        },
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 2
+        },
+        {
+          "name": "video_info",
+          "type": "VHS_VIDEOINFO",
+          "link": 3
+        },
+        {
+          "name": "camera_plan",
+          "type": "STRING",
+          "link": 4
+        }
+      ],
+      "outputs": [
+        {
+          "name": "segment_frames",
+          "type": "IMAGE",
+          "links": [
+            25
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "segment_audio",
+          "type": "AUDIO",
+          "links": [
+            21
+          ],
+          "slot_index": 1
+        },
+        {
+          "name": "source_audio",
+          "type": "AUDIO",
+          "links": [],
+          "slot_index": 2
+        },
+        {
+          "name": "segment_prompt",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 3
+        },
+        {
+          "name": "camera_plan",
+          "type": "STRING",
+          "links": [
+            26
+          ],
+          "slot_index": 4
+        },
+        {
+          "name": "start_frame",
+          "type": "INT",
+          "links": [],
+          "slot_index": 5
+        },
+        {
+          "name": "end_frame",
+          "type": "INT",
+          "links": [],
+          "slot_index": 6
+        },
+        {
+          "name": "segment_video_info",
+          "type": "VHS_VIDEOINFO",
+          "links": [],
+          "slot_index": 7
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "H3R2VCameraLipLock"
+      },
+      "widgets_values": [
+        0,
+        124,
+        "{\n  \"segments\": [\n    {\"start_frame\": 0, \"end_frame\": 124, \"shot\": \"wide shot\", \"movement\": \"slow dolly in\", \"speed\": \"slow\", \"strength\": 0.35},\n    {\"start_frame\": 124, \"end_frame\": 248, \"shot\": \"medium shot\", \"movement\": \"smooth tracking shot\", \"speed\": \"moderate\", \"strength\": 0.45},\n    {\"start_frame\": 248, \"end_frame\": 372, \"shot\": \"close-up\", \"movement\": \"static camera\", \"speed\": \"very slow\", \"strength\": 0.20}\n  ]\n}",
+        "wide shot",
+        "slow dolly in",
+        "slow",
+        0.35,
+        0.98,
+        24
+      ],
+      "title": "Source segment / camera instruction"
+    },
+    {
+      "id": 120,
+      "type": "H3R2VCameraLipLock",
+      "pos": [
+        1470,
+        540
+      ],
+      "size": [
+        280,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 5
+        },
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 6
+        },
+        {
+          "name": "video_info",
+          "type": "VHS_VIDEOINFO",
+          "link": 7
+        },
+        {
+          "name": "camera_plan",
+          "type": "STRING",
+          "link": 8
+        }
+      ],
+      "outputs": [
+        {
+          "name": "segment_frames",
+          "type": "IMAGE",
+          "links": [
+            29
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "segment_audio",
+          "type": "AUDIO",
+          "links": [
+            22
+          ],
+          "slot_index": 1
+        },
+        {
+          "name": "source_audio",
+          "type": "AUDIO",
+          "links": [],
+          "slot_index": 2
+        },
+        {
+          "name": "segment_prompt",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 3
+        },
+        {
+          "name": "camera_plan",
+          "type": "STRING",
+          "links": [
+            30
+          ],
+          "slot_index": 4
+        },
+        {
+          "name": "start_frame",
+          "type": "INT",
+          "links": [],
+          "slot_index": 5
+        },
+        {
+          "name": "end_frame",
+          "type": "INT",
+          "links": [],
+          "slot_index": 6
+        },
+        {
+          "name": "segment_video_info",
+          "type": "VHS_VIDEOINFO",
+          "links": [],
+          "slot_index": 7
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "H3R2VCameraLipLock"
+      },
+      "widgets_values": [
+        1,
+        124,
+        "{\n  \"segments\": [\n    {\"start_frame\": 0, \"end_frame\": 124, \"shot\": \"wide shot\", \"movement\": \"slow dolly in\", \"speed\": \"slow\", \"strength\": 0.35},\n    {\"start_frame\": 124, \"end_frame\": 248, \"shot\": \"medium shot\", \"movement\": \"smooth tracking shot\", \"speed\": \"moderate\", \"strength\": 0.45},\n    {\"start_frame\": 248, \"end_frame\": 372, \"shot\": \"close-up\", \"movement\": \"static camera\", \"speed\": \"very slow\", \"strength\": 0.20}\n  ]\n}",
+        "medium shot",
+        "smooth tracking shot",
+        "moderate",
+        0.45,
+        0.98,
+        24
+      ],
+      "title": "Source segment / camera instruction"
+    },
+    {
+      "id": 130,
+      "type": "H3R2VCameraLipLock",
+      "pos": [
+        2090,
+        770
+      ],
+      "size": [
+        280,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 9
+        },
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 10
+        },
+        {
+          "name": "video_info",
+          "type": "VHS_VIDEOINFO",
+          "link": 11
+        },
+        {
+          "name": "camera_plan",
+          "type": "STRING",
+          "link": 12
+        }
+      ],
+      "outputs": [
+        {
+          "name": "segment_frames",
+          "type": "IMAGE",
+          "links": [
+            33
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "segment_audio",
+          "type": "AUDIO",
+          "links": [
+            24
+          ],
+          "slot_index": 1
+        },
+        {
+          "name": "source_audio",
+          "type": "AUDIO",
+          "links": [],
+          "slot_index": 2
+        },
+        {
+          "name": "segment_prompt",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 3
+        },
+        {
+          "name": "camera_plan",
+          "type": "STRING",
+          "links": [
+            34
+          ],
+          "slot_index": 4
+        },
+        {
+          "name": "start_frame",
+          "type": "INT",
+          "links": [],
+          "slot_index": 5
+        },
+        {
+          "name": "end_frame",
+          "type": "INT",
+          "links": [],
+          "slot_index": 6
+        },
+        {
+          "name": "segment_video_info",
+          "type": "VHS_VIDEOINFO",
+          "links": [],
+          "slot_index": 7
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "H3R2VCameraLipLock"
+      },
+      "widgets_values": [
+        2,
+        124,
+        "{\n  \"segments\": [\n    {\"start_frame\": 0, \"end_frame\": 124, \"shot\": \"wide shot\", \"movement\": \"slow dolly in\", \"speed\": \"slow\", \"strength\": 0.35},\n    {\"start_frame\": 124, \"end_frame\": 248, \"shot\": \"medium shot\", \"movement\": \"smooth tracking shot\", \"speed\": \"moderate\", \"strength\": 0.45},\n    {\"start_frame\": 248, \"end_frame\": 372, \"shot\": \"close-up\", \"movement\": \"static camera\", \"speed\": \"very slow\", \"strength\": 0.20}\n  ]\n}",
+        "close-up",
+        "static camera",
+        "very slow",
+        0.2,
+        0.98,
+        24
+      ],
+      "title": "Source segment / camera instruction"
+    },
+    {
+      "id": 200,
+      "type": "ImageBatch",
+      "pos": [
+        850,
+        1230
+      ],
+      "size": [
+        280,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image1",
+          "type": "IMAGE",
+          "link": 13
+        },
+        {
+          "name": "image2",
+          "type": "IMAGE",
+          "link": 14
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            15
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageBatch"
+      },
+      "widgets_values": [],
+      "title": "ASSEMBLE SEGMENTS 1 + 2"
+    },
+    {
+      "id": 201,
+      "type": "ImageBatch",
+      "pos": [
+        1160,
+        1230
+      ],
+      "size": [
+        280,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image1",
+          "type": "IMAGE",
+          "link": 15
+        },
+        {
+          "name": "image2",
+          "type": "IMAGE",
+          "link": 16
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            17
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageBatch"
+      },
+      "widgets_values": [],
+      "title": "ASSEMBLE SEGMENTS 1 + 2 + 3"
+    },
+    {
+      "id": 202,
+      "type": "CreateVideo",
+      "pos": [
+        1470,
+        1230
+      ],
+      "size": [
+        280,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 17
+        },
+        {
+          "name": "fps",
+          "type": "FLOAT",
+          "link": 18,
+          "widget": {
+            "name": "fps"
+          }
+        },
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 19
+        }
+      ],
+      "outputs": [
+        {
+          "name": "VIDEO",
+          "type": "VIDEO",
+          "links": [
+            20
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CreateVideo"
+      },
+      "widgets_values": [
+        30,
+        8
+      ],
+      "title": "CREATE VIDEO · ORIGINAL AUDIO"
+    },
+    {
+      "id": 203,
+      "type": "SaveVideo",
+      "pos": [
+        850,
+        1500
+      ],
+      "size": [
+        560,
+        360
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "link": 20
+        }
+      ],
+      "outputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "links": [],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SaveVideo"
+      },
+      "widgets_values": [
+        "h3_camera_2d/reframed_source",
+        "auto",
+        "auto"
+      ],
+      "title": "SAVE · SOURCE AUDIO PASSTHROUGH"
+    },
+    {
+      "id": 204,
+      "type": "H3CameraAudioJoin",
+      "pos": [
+        1470,
+        1460
+      ],
+      "size": [
+        280,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio1",
+          "type": "AUDIO",
+          "link": 21
+        },
+        {
+          "name": "audio2",
+          "type": "AUDIO",
+          "link": 22
+        }
+      ],
+      "outputs": [
+        {
+          "name": "AUDIO",
+          "type": "AUDIO",
+          "links": [
+            23
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "H3CameraAudioJoin"
+      },
+      "widgets_values": [],
+      "title": "Join original segment audio 1+2"
+    },
+    {
+      "id": 205,
+      "type": "H3CameraAudioJoin",
+      "pos": [
+        1780,
+        1460
+      ],
+      "size": [
+        280,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio1",
+          "type": "AUDIO",
+          "link": 23
+        },
+        {
+          "name": "audio2",
+          "type": "AUDIO",
+          "link": 24
+        }
+      ],
+      "outputs": [
+        {
+          "name": "AUDIO",
+          "type": "AUDIO",
+          "links": [
+            19
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "H3CameraAudioJoin"
+      },
+      "widgets_values": [],
+      "title": "Join original segment audio 1+2+3"
+    },
+    {
+      "id": 240,
+      "type": "H3CameraReframe",
+      "pos": [
+        850,
+        300
+      ],
+      "size": [
+        280,
+        150
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "mode": 0,
+      "properties": {
+        "Node name for S&R": "H3CameraReframe"
+      },
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 25
+        },
+        {
+          "name": "segment_plan",
+          "type": "STRING",
+          "link": 26
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "link": 27,
+          "widget": {
+            "name": "width"
+          }
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "link": 28,
+          "widget": {
+            "name": "height"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "reframed_source_frames",
+          "type": "IMAGE",
+          "links": [
+            13
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "camera_path_report",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 1
+        }
+      ],
+      "widgets_values": [
+        960,
+        544
+      ],
+      "order": 10,
+      "title": "Actual 2D camera · segment 1"
+    },
+    {
+      "id": 241,
+      "type": "H3CameraReframe",
+      "pos": [
+        850,
+        500
+      ],
+      "size": [
+        280,
+        150
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "mode": 0,
+      "properties": {
+        "Node name for S&R": "H3CameraReframe"
+      },
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 29
+        },
+        {
+          "name": "segment_plan",
+          "type": "STRING",
+          "link": 30
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "link": 31,
+          "widget": {
+            "name": "width"
+          }
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "link": 32,
+          "widget": {
+            "name": "height"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "reframed_source_frames",
+          "type": "IMAGE",
+          "links": [
+            14
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "camera_path_report",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 1
+        }
+      ],
+      "widgets_values": [
+        960,
+        544
+      ],
+      "order": 11,
+      "title": "Actual 2D camera · segment 2"
+    },
+    {
+      "id": 242,
+      "type": "H3CameraReframe",
+      "pos": [
+        850,
+        700
+      ],
+      "size": [
+        280,
+        150
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "mode": 0,
+      "properties": {
+        "Node name for S&R": "H3CameraReframe"
+      },
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 33
+        },
+        {
+          "name": "segment_plan",
+          "type": "STRING",
+          "link": 34
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "link": 35,
+          "widget": {
+            "name": "width"
+          }
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "link": 36,
+          "widget": {
+            "name": "height"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "reframed_source_frames",
+          "type": "IMAGE",
+          "links": [
+            16
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "camera_path_report",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 1
+        }
+      ],
+      "widgets_values": [
+        960,
+        544
+      ],
+      "order": 12,
+      "title": "Actual 2D camera · segment 3"
+    }
+  ],
+  "links": [
+    [
+      1,
+      90,
+      0,
+      100,
+      0,
+      "IMAGE"
+    ],
+    [
+      2,
+      90,
+      1,
+      100,
+      1,
+      "AUDIO"
+    ],
+    [
+      3,
+      90,
+      3,
+      100,
+      2,
+      "VHS_VIDEOINFO"
+    ],
+    [
+      4,
+      90,
+      2,
+      100,
+      3,
+      "STRING"
+    ],
+    [
+      5,
+      90,
+      0,
+      120,
+      0,
+      "IMAGE"
+    ],
+    [
+      6,
+      90,
+      1,
+      120,
+      1,
+      "AUDIO"
+    ],
+    [
+      7,
+      90,
+      3,
+      120,
+      2,
+      "VHS_VIDEOINFO"
+    ],
+    [
+      8,
+      90,
+      2,
+      120,
+      3,
+      "STRING"
+    ],
+    [
+      9,
+      90,
+      0,
+      130,
+      0,
+      "IMAGE"
+    ],
+    [
+      10,
+      90,
+      1,
+      130,
+      1,
+      "AUDIO"
+    ],
+    [
+      11,
+      90,
+      3,
+      130,
+      2,
+      "VHS_VIDEOINFO"
+    ],
+    [
+      12,
+      90,
+      2,
+      130,
+      3,
+      "STRING"
+    ],
+    [
+      13,
+      240,
+      0,
+      200,
+      0,
+      "IMAGE"
+    ],
+    [
+      14,
+      241,
+      0,
+      200,
+      1,
+      "IMAGE"
+    ],
+    [
+      15,
+      200,
+      0,
+      201,
+      0,
+      "IMAGE"
+    ],
+    [
+      16,
+      242,
+      0,
+      201,
+      1,
+      "IMAGE"
+    ],
+    [
+      17,
+      201,
+      0,
+      202,
+      0,
+      "IMAGE"
+    ],
+    [
+      18,
+      90,
+      4,
+      202,
+      1,
+      "FLOAT"
+    ],
+    [
+      19,
+      205,
+      0,
+      202,
+      2,
+      "AUDIO"
+    ],
+    [
+      20,
+      202,
+      0,
+      203,
+      0,
+      "VIDEO"
+    ],
+    [
+      21,
+      100,
+      1,
+      204,
+      0,
+      "AUDIO"
+    ],
+    [
+      22,
+      120,
+      1,
+      204,
+      1,
+      "AUDIO"
+    ],
+    [
+      23,
+      204,
+      0,
+      205,
+      0,
+      "AUDIO"
+    ],
+    [
+      24,
+      130,
+      1,
+      205,
+      1,
+      "AUDIO"
+    ],
+    [
+      25,
+      100,
+      0,
+      240,
+      0,
+      "IMAGE"
+    ],
+    [
+      26,
+      100,
+      4,
+      240,
+      1,
+      "STRING"
+    ],
+    [
+      27,
+      90,
+      6,
+      240,
+      2,
+      "INT"
+    ],
+    [
+      28,
+      90,
+      7,
+      240,
+      3,
+      "INT"
+    ],
+    [
+      29,
+      120,
+      0,
+      241,
+      0,
+      "IMAGE"
+    ],
+    [
+      30,
+      120,
+      4,
+      241,
+      1,
+      "STRING"
+    ],
+    [
+      31,
+      90,
+      6,
+      241,
+      2,
+      "INT"
+    ],
+    [
+      32,
+      90,
+      7,
+      241,
+      3,
+      "INT"
+    ],
+    [
+      33,
+      130,
+      0,
+      242,
+      0,
+      "IMAGE"
+    ],
+    [
+      34,
+      130,
+      4,
+      242,
+      1,
+      "STRING"
+    ],
+    [
+      35,
+      90,
+      6,
+      242,
+      2,
+      "INT"
+    ],
+    [
+      36,
+      90,
+      7,
+      242,
+      3,
+      "INT"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.8,
+      "offset": [
+        20,
+        20
+      ]
+    }
+  },
+  "version": 0.4
+}

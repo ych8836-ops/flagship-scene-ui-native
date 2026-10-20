@@ -1,0 +1,132 @@
+{
+  "last_node_id": 90,
+  "last_link_id": 0,
+  "nodes": [
+    {
+      "id": 90,
+      "type": "H3R2VCameraTimeline",
+      "pos": [
+        100,
+        100
+      ],
+      "size": [
+        1200,
+        760
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": [],
+          "slot_index": 0
+        },
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "links": [],
+          "slot_index": 1
+        },
+        {
+          "name": "camera_plan",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 2
+        },
+        {
+          "name": "video_info",
+          "type": "VHS_VIDEOINFO",
+          "links": [],
+          "slot_index": 3
+        },
+        {
+          "name": "fps",
+          "type": "FLOAT",
+          "links": [],
+          "slot_index": 4
+        },
+        {
+          "name": "edit_strength",
+          "type": "FLOAT",
+          "links": [],
+          "slot_index": 5
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "links": [],
+          "slot_index": 6
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "links": [],
+          "slot_index": 7
+        },
+        {
+          "name": "model_settings",
+          "type": "H3_CAMERA_SETTINGS",
+          "links": [],
+          "slot_index": 8
+        },
+        {
+          "name": "steps",
+          "type": "INT",
+          "links": [],
+          "slot_index": 9
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "H3R2VCameraTimeline",
+        "h3CameraStudio": true
+      },
+      "widgets_values": [
+        "",
+        "{\n  \"segments\": [\n    {\"start_frame\": 0, \"end_frame\": 124, \"shot\": \"wide shot\", \"movement\": \"slow dolly in\", \"speed\": \"slow\", \"strength\": 0.35},\n    {\"start_frame\": 124, \"end_frame\": 248, \"shot\": \"medium shot\", \"movement\": \"smooth tracking shot\", \"speed\": \"moderate\", \"strength\": 0.45},\n    {\"start_frame\": 248, \"end_frame\": 372, \"shot\": \"close-up\", \"movement\": \"static camera\", \"speed\": \"very slow\", \"strength\": 0.20}\n  ]\n}",
+        24,
+        0.95,
+        3,
+        "minimax\\minimax_h3_fl2v_turbo_8step_v1.0_comfyui_bf16.safetensors",
+        1.0,
+        true,
+        false,
+        8,
+        "source",
+        0.5,
+        960,
+        544,
+        true,
+        true,
+        "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+        false,
+        2.0,
+        "Ultra",
+        "Auto Scan (Clean/Chain90)",
+        "110% Master",
+        "Auto Natural",
+        95,
+        "slow",
+        "Auto Temporal",
+        "Auto",
+        "SDR"
+      ],
+      "title": "H3 R2V CAMERA · ALL IN ONE"
+    }
+  ],
+  "links": [],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.8,
+      "offset": [
+        80,
+        80
+      ]
+    }
+  },
+  "version": 0.4
+}

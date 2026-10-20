@@ -1,0 +1,3608 @@
+{
+  "last_node_id": 1318,
+  "last_link_id": 102,
+  "nodes": [
+    {
+      "id": 2,
+      "type": "CLIPLoader",
+      "pos": [
+        850,
+        80
+      ],
+      "size": [
+        280,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            6,
+            30,
+            54
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPLoader"
+      },
+      "widgets_values": [
+        "qwen3vl_32b_minimax_h3_nvfp4_awq.safetensors",
+        "minimax",
+        "default"
+      ],
+      "title": "Load H3 Text Encoder"
+    },
+    {
+      "id": 3,
+      "type": "UNETLoader",
+      "pos": [
+        1160,
+        80
+      ],
+      "size": [
+        280,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            82
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "UNETLoader"
+      },
+      "widgets_values": [
+        "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+        "default"
+      ],
+      "title": "Selected H3 FL2VA model (kept)"
+    },
+    {
+      "id": 4,
+      "type": "VAELoader",
+      "pos": [
+        1470,
+        80
+      ],
+      "size": [
+        280,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            7,
+            25,
+            31,
+            49,
+            55,
+            73
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader"
+      },
+      "widgets_values": [
+        "minimax_h3_video_vae_fp16.safetensors"
+      ],
+      "title": "Load Video VAE"
+    },
+    {
+      "id": 5,
+      "type": "VAELoader",
+      "pos": [
+        1780,
+        80
+      ],
+      "size": [
+        280,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            8,
+            32,
+            56
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader"
+      },
+      "widgets_values": [
+        "minimax_h3_audio_vae_fp32.safetensors"
+      ],
+      "title": "Load Audio VAE"
+    },
+    {
+      "id": 6,
+      "type": "MiniMaxH3SigmaShift",
+      "pos": [
+        2090,
+        80
+      ],
+      "size": [
+        280,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            14,
+            16,
+            38,
+            40,
+            62,
+            64
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "MiniMaxH3SigmaShift"
+      },
+      "widgets_values": [
+        12,
+        3
+      ],
+      "title": "H3 Sigma Shift"
+    },
+    {
+      "id": 90,
+      "type": "H3R2VCameraTimeline",
+      "pos": [
+        30,
+        40
+      ],
+      "size": [
+        1200,
+        760
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": [
+            2,
+            26,
+            50
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "links": [
+            3,
+            27,
+            51
+          ],
+          "slot_index": 1
+        },
+        {
+          "name": "camera_plan",
+          "type": "STRING",
+          "links": [
+            5,
+            29,
+            53
+          ],
+          "slot_index": 2
+        },
+        {
+          "name": "video_info",
+          "type": "VHS_VIDEOINFO",
+          "links": [
+            4,
+            28,
+            52
+          ],
+          "slot_index": 3
+        },
+        {
+          "name": "fps",
+          "type": "FLOAT",
+          "links": [
+            79
+          ],
+          "slot_index": 4
+        },
+        {
+          "name": "edit_strength",
+          "type": "FLOAT",
+          "links": [
+            18,
+            42,
+            66
+          ],
+          "slot_index": 5
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "links": [
+            9,
+            33,
+            57
+          ],
+          "slot_index": 6
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "links": [
+            10,
+            34,
+            58
+          ],
+          "slot_index": 7
+        },
+        {
+          "name": "model_settings",
+          "type": "H3_CAMERA_SETTINGS",
+          "links": [
+            83
+          ],
+          "slot_index": 8
+        },
+        {
+          "name": "steps",
+          "type": "INT",
+          "links": [
+            17,
+            41,
+            65
+          ],
+          "slot_index": 9
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "H3R2VCameraTimeline"
+      },
+      "widgets_values": [
+        "",
+        "{\n  \"segments\": [\n    {\"start_frame\": 0, \"end_frame\": 124, \"shot\": \"wide shot\", \"movement\": \"slow dolly in\", \"speed\": \"slow\", \"strength\": 0.35},\n    {\"start_frame\": 124, \"end_frame\": 248, \"shot\": \"medium shot\", \"movement\": \"smooth tracking shot\", \"speed\": \"moderate\", \"strength\": 0.45},\n    {\"start_frame\": 248, \"end_frame\": 372, \"shot\": \"close-up\", \"movement\": \"static camera\", \"speed\": \"very slow\", \"strength\": 0.20}\n  ]\n}",
+        24,
+        0.95,
+        3,
+        "minimax\\minimax_h3_fl2v_turbo_8step_v1.0_comfyui_bf16.safetensors",
+        1.0,
+        true,
+        false,
+        8,
+        "source",
+        0.5,
+        960,
+        544,
+        true,
+        true
+      ],
+      "title": "R2V TIMELINE DIRECTOR · UPLOAD SOURCE HERE"
+    },
+    {
+      "id": 100,
+      "type": "H3R2VCameraLipLock",
+      "pos": [
+        850,
+        310
+      ],
+      "size": [
+        280,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 2
+        },
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 3
+        },
+        {
+          "name": "video_info",
+          "type": "VHS_VIDEOINFO",
+          "link": 4
+        },
+        {
+          "name": "camera_plan",
+          "type": "STRING",
+          "link": 5
+        }
+      ],
+      "outputs": [
+        {
+          "name": "segment_frames",
+          "type": "IMAGE",
+          "links": [
+            12,
+            84,
+            88
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "segment_audio",
+          "type": "AUDIO",
+          "links": [
+            13,
+            99
+          ],
+          "slot_index": 1
+        },
+        {
+          "name": "source_audio",
+          "type": "AUDIO",
+          "links": [],
+          "slot_index": 2
+        },
+        {
+          "name": "segment_prompt",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 3
+        },
+        {
+          "name": "camera_plan",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 4
+        },
+        {
+          "name": "start_frame",
+          "type": "INT",
+          "links": [],
+          "slot_index": 5
+        },
+        {
+          "name": "end_frame",
+          "type": "INT",
+          "links": [],
+          "slot_index": 6
+        },
+        {
+          "name": "segment_video_info",
+          "type": "VHS_VIDEOINFO",
+          "links": [],
+          "slot_index": 7
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "H3R2VCameraLipLock"
+      },
+      "widgets_values": [
+        0,
+        124,
+        "{\n  \"segments\": [\n    {\"start_frame\": 0, \"end_frame\": 124, \"shot\": \"wide shot\", \"movement\": \"slow dolly in\", \"speed\": \"slow\", \"strength\": 0.35},\n    {\"start_frame\": 124, \"end_frame\": 248, \"shot\": \"medium shot\", \"movement\": \"smooth tracking shot\", \"speed\": \"moderate\", \"strength\": 0.45},\n    {\"start_frame\": 248, \"end_frame\": 372, \"shot\": \"close-up\", \"movement\": \"static camera\", \"speed\": \"very slow\", \"strength\": 0.20}\n  ]\n}",
+        "wide shot",
+        "slow dolly in",
+        "slow",
+        0.35,
+        0.98,
+        24
+      ],
+      "title": "Source segment / camera instruction"
+    },
+    {
+      "id": 110,
+      "type": "MiniMaxH3ReferenceToVideo",
+      "pos": [
+        1160,
+        310
+      ],
+      "size": [
+        280,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 6
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 7
+        },
+        {
+          "name": "audio_vae",
+          "type": "VAE",
+          "link": 8
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "link": 9,
+          "widget": {
+            "name": "width"
+          }
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "link": 10,
+          "widget": {
+            "name": "height"
+          }
+        },
+        {
+          "name": "ref_images.ref_image_0",
+          "type": "IMAGE",
+          "link": 11
+        },
+        {
+          "name": "ref_videos.ref_video_0",
+          "type": "IMAGE",
+          "link": 12
+        },
+        {
+          "name": "ref_video_audios.ref_video_audio_0",
+          "type": "AUDIO",
+          "link": 13
+        }
+      ],
+      "outputs": [
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "links": [
+            86
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            23
+          ],
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "MiniMaxH3ReferenceToVideo"
+      },
+      "widgets_values": [
+        "Per-segment camera prompt is injected automatically when queued.",
+        1344,
+        768,
+        124,
+        "match"
+      ],
+      "title": "FULL REFERENCE · empty target camera"
+    },
+    {
+      "id": 111,
+      "type": "BasicGuider",
+      "pos": [
+        1470,
+        310
+      ],
+      "size": [
+        280,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 14
+        },
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 15
+        }
+      ],
+      "outputs": [
+        {
+          "name": "GUIDER",
+          "type": "GUIDER",
+          "links": [
+            20
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BasicGuider"
+      },
+      "widgets_values": [],
+      "title": "Guide 1"
+    },
+    {
+      "id": 112,
+      "type": "RandomNoise",
+      "pos": [
+        1780,
+        310
+      ],
+      "size": [
+        280,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 9,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "NOISE",
+          "type": "NOISE",
+          "links": [
+            19
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "RandomNoise"
+      },
+      "widgets_values": [
+        1001,
+        "fixed"
+      ],
+      "title": "Seed 1"
+    },
+    {
+      "id": 113,
+      "type": "BasicScheduler",
+      "pos": [
+        2090,
+        310
+      ],
+      "size": [
+        280,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 16
+        },
+        {
+          "name": "steps",
+          "type": "INT",
+          "link": 17,
+          "widget": {
+            "name": "steps"
+          }
+        },
+        {
+          "name": "denoise",
+          "type": "FLOAT",
+          "link": 18,
+          "widget": {
+            "name": "denoise"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SIGMAS",
+          "type": "SIGMAS",
+          "links": [
+            22
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BasicScheduler"
+      },
+      "widgets_values": [
+        "simple",
+        20,
+        1.0
+      ],
+      "title": "Scheduler 1"
+    },
+    {
+      "id": 114,
+      "type": "KSamplerSelect",
+      "pos": [
+        2400,
+        310
+      ],
+      "size": [
+        280,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 11,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "SAMPLER",
+          "type": "SAMPLER",
+          "links": [
+            21
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSamplerSelect"
+      },
+      "widgets_values": [
+        "res_multistep"
+      ],
+      "title": "Sampler 1"
+    },
+    {
+      "id": 115,
+      "type": "SamplerCustomAdvanced",
+      "pos": [
+        850,
+        540
+      ],
+      "size": [
+        280,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "noise",
+          "type": "NOISE",
+          "link": 19
+        },
+        {
+          "name": "guider",
+          "type": "GUIDER",
+          "link": 20
+        },
+        {
+          "name": "sampler",
+          "type": "SAMPLER",
+          "link": 21
+        },
+        {
+          "name": "sigmas",
+          "type": "SIGMAS",
+          "link": 22
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 23
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "LATENT",
+          "links": [
+            24
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "denoised_output",
+          "type": "LATENT",
+          "links": [],
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SamplerCustomAdvanced"
+      },
+      "widgets_values": [],
+      "title": "Sample 1"
+    },
+    {
+      "id": 116,
+      "type": "VAEDecode",
+      "pos": [
+        1160,
+        540
+      ],
+      "size": [
+        280,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 24
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 25
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            87
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode"
+      },
+      "widgets_values": [],
+      "title": "Decode 1"
+    },
+    {
+      "id": 120,
+      "type": "H3R2VCameraLipLock",
+      "pos": [
+        1470,
+        540
+      ],
+      "size": [
+        280,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 26
+        },
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 27
+        },
+        {
+          "name": "video_info",
+          "type": "VHS_VIDEOINFO",
+          "link": 28
+        },
+        {
+          "name": "camera_plan",
+          "type": "STRING",
+          "link": 29
+        }
+      ],
+      "outputs": [
+        {
+          "name": "segment_frames",
+          "type": "IMAGE",
+          "links": [
+            36,
+            89,
+            93
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "segment_audio",
+          "type": "AUDIO",
+          "links": [
+            37,
+            100
+          ],
+          "slot_index": 1
+        },
+        {
+          "name": "source_audio",
+          "type": "AUDIO",
+          "links": [],
+          "slot_index": 2
+        },
+        {
+          "name": "segment_prompt",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 3
+        },
+        {
+          "name": "camera_plan",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 4
+        },
+        {
+          "name": "start_frame",
+          "type": "INT",
+          "links": [],
+          "slot_index": 5
+        },
+        {
+          "name": "end_frame",
+          "type": "INT",
+          "links": [],
+          "slot_index": 6
+        },
+        {
+          "name": "segment_video_info",
+          "type": "VHS_VIDEOINFO",
+          "links": [],
+          "slot_index": 7
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "H3R2VCameraLipLock"
+      },
+      "widgets_values": [
+        1,
+        124,
+        "{\n  \"segments\": [\n    {\"start_frame\": 0, \"end_frame\": 124, \"shot\": \"wide shot\", \"movement\": \"slow dolly in\", \"speed\": \"slow\", \"strength\": 0.35},\n    {\"start_frame\": 124, \"end_frame\": 248, \"shot\": \"medium shot\", \"movement\": \"smooth tracking shot\", \"speed\": \"moderate\", \"strength\": 0.45},\n    {\"start_frame\": 248, \"end_frame\": 372, \"shot\": \"close-up\", \"movement\": \"static camera\", \"speed\": \"very slow\", \"strength\": 0.20}\n  ]\n}",
+        "medium shot",
+        "smooth tracking shot",
+        "moderate",
+        0.45,
+        0.98,
+        24
+      ],
+      "title": "Source segment / camera instruction"
+    },
+    {
+      "id": 121,
+      "type": "MiniMaxH3ReferenceToVideo",
+      "pos": [
+        1780,
+        540
+      ],
+      "size": [
+        280,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 30
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 31
+        },
+        {
+          "name": "audio_vae",
+          "type": "VAE",
+          "link": 32
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "link": 33,
+          "widget": {
+            "name": "width"
+          }
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "link": 34,
+          "widget": {
+            "name": "height"
+          }
+        },
+        {
+          "name": "ref_images.ref_image_0",
+          "type": "IMAGE",
+          "link": 35
+        },
+        {
+          "name": "ref_videos.ref_video_0",
+          "type": "IMAGE",
+          "link": 36
+        },
+        {
+          "name": "ref_video_audios.ref_video_audio_0",
+          "type": "AUDIO",
+          "link": 37
+        }
+      ],
+      "outputs": [
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "links": [
+            91
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            47
+          ],
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "MiniMaxH3ReferenceToVideo"
+      },
+      "widgets_values": [
+        "Per-segment camera prompt is injected automatically when queued.",
+        1344,
+        768,
+        124,
+        "match"
+      ],
+      "title": "FULL REFERENCE · empty target camera"
+    },
+    {
+      "id": 122,
+      "type": "BasicGuider",
+      "pos": [
+        2090,
+        540
+      ],
+      "size": [
+        280,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 38
+        },
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 39
+        }
+      ],
+      "outputs": [
+        {
+          "name": "GUIDER",
+          "type": "GUIDER",
+          "links": [
+            44
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BasicGuider"
+      },
+      "widgets_values": [],
+      "title": "Guide 2"
+    },
+    {
+      "id": 123,
+      "type": "RandomNoise",
+      "pos": [
+        2400,
+        540
+      ],
+      "size": [
+        280,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 17,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "NOISE",
+          "type": "NOISE",
+          "links": [
+            43
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "RandomNoise"
+      },
+      "widgets_values": [
+        1002,
+        "fixed"
+      ],
+      "title": "Seed 2"
+    },
+    {
+      "id": 124,
+      "type": "BasicScheduler",
+      "pos": [
+        850,
+        770
+      ],
+      "size": [
+        280,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 40
+        },
+        {
+          "name": "steps",
+          "type": "INT",
+          "link": 41,
+          "widget": {
+            "name": "steps"
+          }
+        },
+        {
+          "name": "denoise",
+          "type": "FLOAT",
+          "link": 42,
+          "widget": {
+            "name": "denoise"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SIGMAS",
+          "type": "SIGMAS",
+          "links": [
+            46
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BasicScheduler"
+      },
+      "widgets_values": [
+        "simple",
+        20,
+        1.0
+      ],
+      "title": "Scheduler 2"
+    },
+    {
+      "id": 125,
+      "type": "KSamplerSelect",
+      "pos": [
+        1160,
+        770
+      ],
+      "size": [
+        280,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 19,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "SAMPLER",
+          "type": "SAMPLER",
+          "links": [
+            45
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSamplerSelect"
+      },
+      "widgets_values": [
+        "res_multistep"
+      ],
+      "title": "Sampler 2"
+    },
+    {
+      "id": 126,
+      "type": "SamplerCustomAdvanced",
+      "pos": [
+        1470,
+        770
+      ],
+      "size": [
+        280,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 20,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "noise",
+          "type": "NOISE",
+          "link": 43
+        },
+        {
+          "name": "guider",
+          "type": "GUIDER",
+          "link": 44
+        },
+        {
+          "name": "sampler",
+          "type": "SAMPLER",
+          "link": 45
+        },
+        {
+          "name": "sigmas",
+          "type": "SIGMAS",
+          "link": 46
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 47
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "LATENT",
+          "links": [
+            48
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "denoised_output",
+          "type": "LATENT",
+          "links": [],
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SamplerCustomAdvanced"
+      },
+      "widgets_values": [],
+      "title": "Sample 2"
+    },
+    {
+      "id": 127,
+      "type": "VAEDecode",
+      "pos": [
+        1780,
+        770
+      ],
+      "size": [
+        280,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 21,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 48
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 49
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            92
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode"
+      },
+      "widgets_values": [],
+      "title": "Decode 2"
+    },
+    {
+      "id": 130,
+      "type": "H3R2VCameraLipLock",
+      "pos": [
+        2090,
+        770
+      ],
+      "size": [
+        280,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 22,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 50
+        },
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 51
+        },
+        {
+          "name": "video_info",
+          "type": "VHS_VIDEOINFO",
+          "link": 52
+        },
+        {
+          "name": "camera_plan",
+          "type": "STRING",
+          "link": 53
+        }
+      ],
+      "outputs": [
+        {
+          "name": "segment_frames",
+          "type": "IMAGE",
+          "links": [
+            60,
+            94,
+            98
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "segment_audio",
+          "type": "AUDIO",
+          "links": [
+            61,
+            102
+          ],
+          "slot_index": 1
+        },
+        {
+          "name": "source_audio",
+          "type": "AUDIO",
+          "links": [],
+          "slot_index": 2
+        },
+        {
+          "name": "segment_prompt",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 3
+        },
+        {
+          "name": "camera_plan",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 4
+        },
+        {
+          "name": "start_frame",
+          "type": "INT",
+          "links": [],
+          "slot_index": 5
+        },
+        {
+          "name": "end_frame",
+          "type": "INT",
+          "links": [],
+          "slot_index": 6
+        },
+        {
+          "name": "segment_video_info",
+          "type": "VHS_VIDEOINFO",
+          "links": [],
+          "slot_index": 7
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "H3R2VCameraLipLock"
+      },
+      "widgets_values": [
+        2,
+        124,
+        "{\n  \"segments\": [\n    {\"start_frame\": 0, \"end_frame\": 124, \"shot\": \"wide shot\", \"movement\": \"slow dolly in\", \"speed\": \"slow\", \"strength\": 0.35},\n    {\"start_frame\": 124, \"end_frame\": 248, \"shot\": \"medium shot\", \"movement\": \"smooth tracking shot\", \"speed\": \"moderate\", \"strength\": 0.45},\n    {\"start_frame\": 248, \"end_frame\": 372, \"shot\": \"close-up\", \"movement\": \"static camera\", \"speed\": \"very slow\", \"strength\": 0.20}\n  ]\n}",
+        "close-up",
+        "static camera",
+        "very slow",
+        0.2,
+        0.98,
+        24
+      ],
+      "title": "Source segment / camera instruction"
+    },
+    {
+      "id": 131,
+      "type": "MiniMaxH3ReferenceToVideo",
+      "pos": [
+        2400,
+        770
+      ],
+      "size": [
+        280,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 23,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 54
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 55
+        },
+        {
+          "name": "audio_vae",
+          "type": "VAE",
+          "link": 56
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "link": 57,
+          "widget": {
+            "name": "width"
+          }
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "link": 58,
+          "widget": {
+            "name": "height"
+          }
+        },
+        {
+          "name": "ref_images.ref_image_0",
+          "type": "IMAGE",
+          "link": 59
+        },
+        {
+          "name": "ref_videos.ref_video_0",
+          "type": "IMAGE",
+          "link": 60
+        },
+        {
+          "name": "ref_video_audios.ref_video_audio_0",
+          "type": "AUDIO",
+          "link": 61
+        }
+      ],
+      "outputs": [
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "links": [
+            96
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            71
+          ],
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "MiniMaxH3ReferenceToVideo"
+      },
+      "widgets_values": [
+        "Per-segment camera prompt is injected automatically when queued.",
+        1344,
+        768,
+        124,
+        "match"
+      ],
+      "title": "FULL REFERENCE · empty target camera"
+    },
+    {
+      "id": 132,
+      "type": "BasicGuider",
+      "pos": [
+        850,
+        1000
+      ],
+      "size": [
+        280,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 24,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 62
+        },
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 63
+        }
+      ],
+      "outputs": [
+        {
+          "name": "GUIDER",
+          "type": "GUIDER",
+          "links": [
+            68
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BasicGuider"
+      },
+      "widgets_values": [],
+      "title": "Guide 3"
+    },
+    {
+      "id": 133,
+      "type": "RandomNoise",
+      "pos": [
+        1160,
+        1000
+      ],
+      "size": [
+        280,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 25,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "NOISE",
+          "type": "NOISE",
+          "links": [
+            67
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "RandomNoise"
+      },
+      "widgets_values": [
+        1003,
+        "fixed"
+      ],
+      "title": "Seed 3"
+    },
+    {
+      "id": 134,
+      "type": "BasicScheduler",
+      "pos": [
+        1470,
+        1000
+      ],
+      "size": [
+        280,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 26,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 64
+        },
+        {
+          "name": "steps",
+          "type": "INT",
+          "link": 65,
+          "widget": {
+            "name": "steps"
+          }
+        },
+        {
+          "name": "denoise",
+          "type": "FLOAT",
+          "link": 66,
+          "widget": {
+            "name": "denoise"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "SIGMAS",
+          "type": "SIGMAS",
+          "links": [
+            70
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "BasicScheduler"
+      },
+      "widgets_values": [
+        "simple",
+        20,
+        1.0
+      ],
+      "title": "Scheduler 3"
+    },
+    {
+      "id": 135,
+      "type": "KSamplerSelect",
+      "pos": [
+        1780,
+        1000
+      ],
+      "size": [
+        280,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 27,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "SAMPLER",
+          "type": "SAMPLER",
+          "links": [
+            69
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSamplerSelect"
+      },
+      "widgets_values": [
+        "res_multistep"
+      ],
+      "title": "Sampler 3"
+    },
+    {
+      "id": 136,
+      "type": "SamplerCustomAdvanced",
+      "pos": [
+        2090,
+        1000
+      ],
+      "size": [
+        280,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 28,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "noise",
+          "type": "NOISE",
+          "link": 67
+        },
+        {
+          "name": "guider",
+          "type": "GUIDER",
+          "link": 68
+        },
+        {
+          "name": "sampler",
+          "type": "SAMPLER",
+          "link": 69
+        },
+        {
+          "name": "sigmas",
+          "type": "SIGMAS",
+          "link": 70
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 71
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "type": "LATENT",
+          "links": [
+            72
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "denoised_output",
+          "type": "LATENT",
+          "links": [],
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SamplerCustomAdvanced"
+      },
+      "widgets_values": [],
+      "title": "Sample 3"
+    },
+    {
+      "id": 137,
+      "type": "VAEDecode",
+      "pos": [
+        2400,
+        1000
+      ],
+      "size": [
+        280,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 29,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 72
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 73
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            97
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode"
+      },
+      "widgets_values": [],
+      "title": "Decode 3"
+    },
+    {
+      "id": 200,
+      "type": "ImageBatch",
+      "pos": [
+        850,
+        1230
+      ],
+      "size": [
+        280,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 30,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image1",
+          "type": "IMAGE",
+          "link": 74
+        },
+        {
+          "name": "image2",
+          "type": "IMAGE",
+          "link": 75
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            76
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageBatch"
+      },
+      "widgets_values": [],
+      "title": "ASSEMBLE SEGMENTS 1 + 2"
+    },
+    {
+      "id": 201,
+      "type": "ImageBatch",
+      "pos": [
+        1160,
+        1230
+      ],
+      "size": [
+        280,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 31,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image1",
+          "type": "IMAGE",
+          "link": 76
+        },
+        {
+          "name": "image2",
+          "type": "IMAGE",
+          "link": 77
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            78
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageBatch"
+      },
+      "widgets_values": [],
+      "title": "ASSEMBLE SEGMENTS 1 + 2 + 3"
+    },
+    {
+      "id": 202,
+      "type": "CreateVideo",
+      "pos": [
+        1470,
+        1230
+      ],
+      "size": [
+        280,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 32,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 78
+        },
+        {
+          "name": "fps",
+          "type": "FLOAT",
+          "link": 79,
+          "widget": {
+            "name": "fps"
+          }
+        },
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": 80
+        }
+      ],
+      "outputs": [
+        {
+          "name": "VIDEO",
+          "type": "VIDEO",
+          "links": [
+            81
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CreateVideo"
+      },
+      "widgets_values": [
+        30.0,
+        8
+      ],
+      "title": "CREATE VIDEO · ORIGINAL AUDIO"
+    },
+    {
+      "id": 203,
+      "type": "SaveVideo",
+      "pos": [
+        850,
+        1500
+      ],
+      "size": [
+        560,
+        360
+      ],
+      "flags": {},
+      "order": 33,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "link": 81
+        }
+      ],
+      "outputs": [
+        {
+          "name": "video",
+          "type": "VIDEO",
+          "links": [],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SaveVideo"
+      },
+      "widgets_values": [
+        "h3_r2v_camera_lip_lock/source_audio",
+        "auto",
+        "auto"
+      ],
+      "title": "SAVE · SOURCE AUDIO PASSTHROUGH"
+    },
+    {
+      "id": 7,
+      "type": "H3CameraModelOptions",
+      "pos": [
+        2090,
+        1230
+      ],
+      "size": [
+        280,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 34,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 82
+        },
+        {
+          "name": "settings",
+          "type": "H3_CAMERA_SETTINGS",
+          "link": 83
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            1
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "H3CameraModelOptions"
+      },
+      "widgets_values": [],
+      "title": "R2V 8-Step LoRA / Sage / Spectrum"
+    },
+    {
+      "id": 1008,
+      "type": "H3FaceTrackCrop",
+      "pos": [
+        2400,
+        1230
+      ],
+      "size": [
+        280,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 35,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 84
+        },
+        {
+          "name": "identity_reference",
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "crops",
+          "type": "IMAGE",
+          "links": [
+            85
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "transform",
+          "type": "H3FACEXFORM",
+          "links": [],
+          "slot_index": 1
+        },
+        {
+          "name": "preview",
+          "type": "IMAGE",
+          "links": [],
+          "slot_index": 2
+        },
+        {
+          "name": "report",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 3
+        },
+        {
+          "name": "canvas_w",
+          "type": "INT",
+          "links": [],
+          "slot_index": 4
+        },
+        {
+          "name": "canvas_h",
+          "type": "INT",
+          "links": [],
+          "slot_index": 5
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "H3FaceTrackCrop"
+      },
+      "widgets_values": [
+        "face_yolov8m.pt",
+        0.35,
+        2.5,
+        512,
+        512,
+        "manual",
+        21,
+        51,
+        "gaussian",
+        "per_frame",
+        true,
+        0.28,
+        "largest",
+        "none",
+        0.5
+      ],
+      "title": "Identity crop · composition removed"
+    },
+    {
+      "id": 1009,
+      "type": "ImageFromBatch",
+      "pos": [
+        850,
+        1460
+      ],
+      "size": [
+        280,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 36,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 85
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            11
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageFromBatch"
+      },
+      "widgets_values": [
+        0,
+        1
+      ],
+      "title": "Per-segment identity anchor"
+    },
+    {
+      "id": 1018,
+      "type": "H3CameraReferenceBalance",
+      "pos": [
+        1160,
+        1460
+      ],
+      "size": [
+        280,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 37,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 86
+        }
+      ],
+      "outputs": [
+        {
+          "name": "balanced_conditioning",
+          "type": "CONDITIONING",
+          "links": [
+            15
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "H3CameraReferenceBalance"
+      },
+      "widgets_values": [],
+      "title": "RELEASE SOURCE CAMERA · keep motion semantics + audio"
+    },
+    {
+      "id": 117,
+      "type": "H3CameraTrimClip",
+      "pos": [
+        1470,
+        1460
+      ],
+      "size": [
+        280,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 38,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 87
+        },
+        {
+          "name": "source_frames",
+          "type": "IMAGE",
+          "link": 88
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            74
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "H3CameraTrimClip"
+      },
+      "widgets_values": [],
+      "title": "Remove padding / keep source duration"
+    },
+    {
+      "id": 1208,
+      "type": "H3FaceTrackCrop",
+      "pos": [
+        1780,
+        1460
+      ],
+      "size": [
+        280,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 39,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 89
+        },
+        {
+          "name": "identity_reference",
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "crops",
+          "type": "IMAGE",
+          "links": [
+            90
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "transform",
+          "type": "H3FACEXFORM",
+          "links": [],
+          "slot_index": 1
+        },
+        {
+          "name": "preview",
+          "type": "IMAGE",
+          "links": [],
+          "slot_index": 2
+        },
+        {
+          "name": "report",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 3
+        },
+        {
+          "name": "canvas_w",
+          "type": "INT",
+          "links": [],
+          "slot_index": 4
+        },
+        {
+          "name": "canvas_h",
+          "type": "INT",
+          "links": [],
+          "slot_index": 5
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "H3FaceTrackCrop"
+      },
+      "widgets_values": [
+        "face_yolov8m.pt",
+        0.35,
+        2.5,
+        512,
+        512,
+        "manual",
+        21,
+        51,
+        "gaussian",
+        "per_frame",
+        true,
+        0.28,
+        "largest",
+        "none",
+        0.5
+      ],
+      "title": "Identity crop · composition removed"
+    },
+    {
+      "id": 1209,
+      "type": "ImageFromBatch",
+      "pos": [
+        2090,
+        1460
+      ],
+      "size": [
+        280,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 40,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 90
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            35
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageFromBatch"
+      },
+      "widgets_values": [
+        0,
+        1
+      ],
+      "title": "Per-segment identity anchor"
+    },
+    {
+      "id": 1218,
+      "type": "H3CameraReferenceBalance",
+      "pos": [
+        2400,
+        1460
+      ],
+      "size": [
+        280,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 41,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 91
+        }
+      ],
+      "outputs": [
+        {
+          "name": "balanced_conditioning",
+          "type": "CONDITIONING",
+          "links": [
+            39
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "H3CameraReferenceBalance"
+      },
+      "widgets_values": [],
+      "title": "RELEASE SOURCE CAMERA · keep motion semantics + audio"
+    },
+    {
+      "id": 128,
+      "type": "H3CameraTrimClip",
+      "pos": [
+        850,
+        1690
+      ],
+      "size": [
+        280,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 42,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 92
+        },
+        {
+          "name": "source_frames",
+          "type": "IMAGE",
+          "link": 93
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            75
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "H3CameraTrimClip"
+      },
+      "widgets_values": [],
+      "title": "Remove padding / keep source duration"
+    },
+    {
+      "id": 1308,
+      "type": "H3FaceTrackCrop",
+      "pos": [
+        1160,
+        1690
+      ],
+      "size": [
+        280,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 43,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 94
+        },
+        {
+          "name": "identity_reference",
+          "type": "IMAGE",
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "crops",
+          "type": "IMAGE",
+          "links": [
+            95
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "transform",
+          "type": "H3FACEXFORM",
+          "links": [],
+          "slot_index": 1
+        },
+        {
+          "name": "preview",
+          "type": "IMAGE",
+          "links": [],
+          "slot_index": 2
+        },
+        {
+          "name": "report",
+          "type": "STRING",
+          "links": [],
+          "slot_index": 3
+        },
+        {
+          "name": "canvas_w",
+          "type": "INT",
+          "links": [],
+          "slot_index": 4
+        },
+        {
+          "name": "canvas_h",
+          "type": "INT",
+          "links": [],
+          "slot_index": 5
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "H3FaceTrackCrop"
+      },
+      "widgets_values": [
+        "face_yolov8m.pt",
+        0.35,
+        2.5,
+        512,
+        512,
+        "manual",
+        21,
+        51,
+        "gaussian",
+        "per_frame",
+        true,
+        0.28,
+        "largest",
+        "none",
+        0.5
+      ],
+      "title": "Identity crop · composition removed"
+    },
+    {
+      "id": 1309,
+      "type": "ImageFromBatch",
+      "pos": [
+        1470,
+        1690
+      ],
+      "size": [
+        280,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 44,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 95
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            59
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageFromBatch"
+      },
+      "widgets_values": [
+        0,
+        1
+      ],
+      "title": "Per-segment identity anchor"
+    },
+    {
+      "id": 1318,
+      "type": "H3CameraReferenceBalance",
+      "pos": [
+        1780,
+        1690
+      ],
+      "size": [
+        280,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 45,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 96
+        }
+      ],
+      "outputs": [
+        {
+          "name": "balanced_conditioning",
+          "type": "CONDITIONING",
+          "links": [
+            63
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "H3CameraReferenceBalance"
+      },
+      "widgets_values": [],
+      "title": "RELEASE SOURCE CAMERA · keep motion semantics + audio"
+    },
+    {
+      "id": 138,
+      "type": "H3CameraTrimClip",
+      "pos": [
+        2090,
+        1690
+      ],
+      "size": [
+        280,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 46,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 97
+        },
+        {
+          "name": "source_frames",
+          "type": "IMAGE",
+          "link": 98
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            77
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "H3CameraTrimClip"
+      },
+      "widgets_values": [],
+      "title": "Remove padding / keep source duration"
+    },
+    {
+      "id": 204,
+      "type": "H3CameraAudioJoin",
+      "pos": [
+        2400,
+        1690
+      ],
+      "size": [
+        280,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 47,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio1",
+          "type": "AUDIO",
+          "link": 99
+        },
+        {
+          "name": "audio2",
+          "type": "AUDIO",
+          "link": 100
+        }
+      ],
+      "outputs": [
+        {
+          "name": "AUDIO",
+          "type": "AUDIO",
+          "links": [
+            101
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "H3CameraAudioJoin"
+      },
+      "widgets_values": [],
+      "title": "Join original segment audio 1+2"
+    },
+    {
+      "id": 205,
+      "type": "H3CameraAudioJoin",
+      "pos": [
+        850,
+        1920
+      ],
+      "size": [
+        280,
+        180
+      ],
+      "flags": {
+        "collapsed": true
+      },
+      "order": 48,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "audio1",
+          "type": "AUDIO",
+          "link": 101
+        },
+        {
+          "name": "audio2",
+          "type": "AUDIO",
+          "link": 102
+        }
+      ],
+      "outputs": [
+        {
+          "name": "AUDIO",
+          "type": "AUDIO",
+          "links": [
+            80
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "H3CameraAudioJoin"
+      },
+      "widgets_values": [],
+      "title": "Join original segment audio 1+2+3"
+    }
+  ],
+  "links": [
+    [
+      1,
+      7,
+      0,
+      6,
+      0,
+      "MODEL"
+    ],
+    [
+      2,
+      90,
+      0,
+      100,
+      0,
+      "IMAGE"
+    ],
+    [
+      3,
+      90,
+      1,
+      100,
+      1,
+      "AUDIO"
+    ],
+    [
+      4,
+      90,
+      3,
+      100,
+      2,
+      "VHS_VIDEOINFO"
+    ],
+    [
+      5,
+      90,
+      2,
+      100,
+      3,
+      "STRING"
+    ],
+    [
+      6,
+      2,
+      0,
+      110,
+      0,
+      "CLIP"
+    ],
+    [
+      7,
+      4,
+      0,
+      110,
+      1,
+      "VAE"
+    ],
+    [
+      8,
+      5,
+      0,
+      110,
+      2,
+      "VAE"
+    ],
+    [
+      9,
+      90,
+      6,
+      110,
+      3,
+      "INT"
+    ],
+    [
+      10,
+      90,
+      7,
+      110,
+      4,
+      "INT"
+    ],
+    [
+      11,
+      1009,
+      0,
+      110,
+      5,
+      "IMAGE"
+    ],
+    [
+      12,
+      100,
+      0,
+      110,
+      6,
+      "IMAGE"
+    ],
+    [
+      13,
+      100,
+      1,
+      110,
+      7,
+      "AUDIO"
+    ],
+    [
+      14,
+      6,
+      0,
+      111,
+      0,
+      "MODEL"
+    ],
+    [
+      15,
+      1018,
+      0,
+      111,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      16,
+      6,
+      0,
+      113,
+      0,
+      "MODEL"
+    ],
+    [
+      17,
+      90,
+      9,
+      113,
+      1,
+      "INT"
+    ],
+    [
+      18,
+      90,
+      5,
+      113,
+      2,
+      "FLOAT"
+    ],
+    [
+      19,
+      112,
+      0,
+      115,
+      0,
+      "NOISE"
+    ],
+    [
+      20,
+      111,
+      0,
+      115,
+      1,
+      "GUIDER"
+    ],
+    [
+      21,
+      114,
+      0,
+      115,
+      2,
+      "SAMPLER"
+    ],
+    [
+      22,
+      113,
+      0,
+      115,
+      3,
+      "SIGMAS"
+    ],
+    [
+      23,
+      110,
+      1,
+      115,
+      4,
+      "LATENT"
+    ],
+    [
+      24,
+      115,
+      0,
+      116,
+      0,
+      "LATENT"
+    ],
+    [
+      25,
+      4,
+      0,
+      116,
+      1,
+      "VAE"
+    ],
+    [
+      26,
+      90,
+      0,
+      120,
+      0,
+      "IMAGE"
+    ],
+    [
+      27,
+      90,
+      1,
+      120,
+      1,
+      "AUDIO"
+    ],
+    [
+      28,
+      90,
+      3,
+      120,
+      2,
+      "VHS_VIDEOINFO"
+    ],
+    [
+      29,
+      90,
+      2,
+      120,
+      3,
+      "STRING"
+    ],
+    [
+      30,
+      2,
+      0,
+      121,
+      0,
+      "CLIP"
+    ],
+    [
+      31,
+      4,
+      0,
+      121,
+      1,
+      "VAE"
+    ],
+    [
+      32,
+      5,
+      0,
+      121,
+      2,
+      "VAE"
+    ],
+    [
+      33,
+      90,
+      6,
+      121,
+      3,
+      "INT"
+    ],
+    [
+      34,
+      90,
+      7,
+      121,
+      4,
+      "INT"
+    ],
+    [
+      35,
+      1209,
+      0,
+      121,
+      5,
+      "IMAGE"
+    ],
+    [
+      36,
+      120,
+      0,
+      121,
+      6,
+      "IMAGE"
+    ],
+    [
+      37,
+      120,
+      1,
+      121,
+      7,
+      "AUDIO"
+    ],
+    [
+      38,
+      6,
+      0,
+      122,
+      0,
+      "MODEL"
+    ],
+    [
+      39,
+      1218,
+      0,
+      122,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      40,
+      6,
+      0,
+      124,
+      0,
+      "MODEL"
+    ],
+    [
+      41,
+      90,
+      9,
+      124,
+      1,
+      "INT"
+    ],
+    [
+      42,
+      90,
+      5,
+      124,
+      2,
+      "FLOAT"
+    ],
+    [
+      43,
+      123,
+      0,
+      126,
+      0,
+      "NOISE"
+    ],
+    [
+      44,
+      122,
+      0,
+      126,
+      1,
+      "GUIDER"
+    ],
+    [
+      45,
+      125,
+      0,
+      126,
+      2,
+      "SAMPLER"
+    ],
+    [
+      46,
+      124,
+      0,
+      126,
+      3,
+      "SIGMAS"
+    ],
+    [
+      47,
+      121,
+      1,
+      126,
+      4,
+      "LATENT"
+    ],
+    [
+      48,
+      126,
+      0,
+      127,
+      0,
+      "LATENT"
+    ],
+    [
+      49,
+      4,
+      0,
+      127,
+      1,
+      "VAE"
+    ],
+    [
+      50,
+      90,
+      0,
+      130,
+      0,
+      "IMAGE"
+    ],
+    [
+      51,
+      90,
+      1,
+      130,
+      1,
+      "AUDIO"
+    ],
+    [
+      52,
+      90,
+      3,
+      130,
+      2,
+      "VHS_VIDEOINFO"
+    ],
+    [
+      53,
+      90,
+      2,
+      130,
+      3,
+      "STRING"
+    ],
+    [
+      54,
+      2,
+      0,
+      131,
+      0,
+      "CLIP"
+    ],
+    [
+      55,
+      4,
+      0,
+      131,
+      1,
+      "VAE"
+    ],
+    [
+      56,
+      5,
+      0,
+      131,
+      2,
+      "VAE"
+    ],
+    [
+      57,
+      90,
+      6,
+      131,
+      3,
+      "INT"
+    ],
+    [
+      58,
+      90,
+      7,
+      131,
+      4,
+      "INT"
+    ],
+    [
+      59,
+      1309,
+      0,
+      131,
+      5,
+      "IMAGE"
+    ],
+    [
+      60,
+      130,
+      0,
+      131,
+      6,
+      "IMAGE"
+    ],
+    [
+      61,
+      130,
+      1,
+      131,
+      7,
+      "AUDIO"
+    ],
+    [
+      62,
+      6,
+      0,
+      132,
+      0,
+      "MODEL"
+    ],
+    [
+      63,
+      1318,
+      0,
+      132,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      64,
+      6,
+      0,
+      134,
+      0,
+      "MODEL"
+    ],
+    [
+      65,
+      90,
+      9,
+      134,
+      1,
+      "INT"
+    ],
+    [
+      66,
+      90,
+      5,
+      134,
+      2,
+      "FLOAT"
+    ],
+    [
+      67,
+      133,
+      0,
+      136,
+      0,
+      "NOISE"
+    ],
+    [
+      68,
+      132,
+      0,
+      136,
+      1,
+      "GUIDER"
+    ],
+    [
+      69,
+      135,
+      0,
+      136,
+      2,
+      "SAMPLER"
+    ],
+    [
+      70,
+      134,
+      0,
+      136,
+      3,
+      "SIGMAS"
+    ],
+    [
+      71,
+      131,
+      1,
+      136,
+      4,
+      "LATENT"
+    ],
+    [
+      72,
+      136,
+      0,
+      137,
+      0,
+      "LATENT"
+    ],
+    [
+      73,
+      4,
+      0,
+      137,
+      1,
+      "VAE"
+    ],
+    [
+      74,
+      117,
+      0,
+      200,
+      0,
+      "IMAGE"
+    ],
+    [
+      75,
+      128,
+      0,
+      200,
+      1,
+      "IMAGE"
+    ],
+    [
+      76,
+      200,
+      0,
+      201,
+      0,
+      "IMAGE"
+    ],
+    [
+      77,
+      138,
+      0,
+      201,
+      1,
+      "IMAGE"
+    ],
+    [
+      78,
+      201,
+      0,
+      202,
+      0,
+      "IMAGE"
+    ],
+    [
+      79,
+      90,
+      4,
+      202,
+      1,
+      "FLOAT"
+    ],
+    [
+      80,
+      205,
+      0,
+      202,
+      2,
+      "AUDIO"
+    ],
+    [
+      81,
+      202,
+      0,
+      203,
+      0,
+      "VIDEO"
+    ],
+    [
+      82,
+      3,
+      0,
+      7,
+      0,
+      "MODEL"
+    ],
+    [
+      83,
+      90,
+      8,
+      7,
+      1,
+      "H3_CAMERA_SETTINGS"
+    ],
+    [
+      84,
+      100,
+      0,
+      1008,
+      0,
+      "IMAGE"
+    ],
+    [
+      85,
+      1008,
+      0,
+      1009,
+      0,
+      "IMAGE"
+    ],
+    [
+      86,
+      110,
+      0,
+      1018,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      87,
+      116,
+      0,
+      117,
+      0,
+      "IMAGE"
+    ],
+    [
+      88,
+      100,
+      0,
+      117,
+      1,
+      "IMAGE"
+    ],
+    [
+      89,
+      120,
+      0,
+      1208,
+      0,
+      "IMAGE"
+    ],
+    [
+      90,
+      1208,
+      0,
+      1209,
+      0,
+      "IMAGE"
+    ],
+    [
+      91,
+      121,
+      0,
+      1218,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      92,
+      127,
+      0,
+      128,
+      0,
+      "IMAGE"
+    ],
+    [
+      93,
+      120,
+      0,
+      128,
+      1,
+      "IMAGE"
+    ],
+    [
+      94,
+      130,
+      0,
+      1308,
+      0,
+      "IMAGE"
+    ],
+    [
+      95,
+      1308,
+      0,
+      1309,
+      0,
+      "IMAGE"
+    ],
+    [
+      96,
+      131,
+      0,
+      1318,
+      0,
+      "CONDITIONING"
+    ],
+    [
+      97,
+      137,
+      0,
+      138,
+      0,
+      "IMAGE"
+    ],
+    [
+      98,
+      130,
+      0,
+      138,
+      1,
+      "IMAGE"
+    ],
+    [
+      99,
+      100,
+      1,
+      204,
+      0,
+      "AUDIO"
+    ],
+    [
+      100,
+      120,
+      1,
+      204,
+      1,
+      "AUDIO"
+    ],
+    [
+      101,
+      204,
+      0,
+      205,
+      0,
+      "AUDIO"
+    ],
+    [
+      102,
+      130,
+      1,
+      205,
+      1,
+      "AUDIO"
+    ]
+  ],
+  "groups": [
+    {
+      "id": 1,
+      "title": "Generation branches (collapsed) / original audio join",
+      "bounding": [
+        820,
+        0,
+        1900,
+        1900
+      ],
+      "color": "#30463e",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.8,
+      "offset": [
+        20,
+        20
+      ]
+    }
+  },
+  "version": 0.4
+}

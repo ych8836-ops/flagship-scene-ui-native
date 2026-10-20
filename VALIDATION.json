@@ -1,0 +1,94 @@
+{
+  "documentation_release": "2026-10-21",
+  "basis": {
+    "python_sources_parsed": 138,
+    "javascript_modules_checked": 31,
+    "local_ui_assets_present": true,
+    "native_sources_unchanged": 273,
+    "fresh_install_copy_verified": true,
+    "existing_install_refused": true,
+    "dry_run_left_target_unchanged": true,
+    "node_packs_installed": 11,
+    "no_models_or_runtimes_bundled": true,
+    "new_video_generated": false,
+    "cpu_smoke": {
+      "scope": "node registration and frontend routes only; not GPU/model/quality verification",
+      "features": {
+        "studio": {
+          "missing": []
+        },
+        "generation": {
+          "missing": []
+        },
+        "assembly": {
+          "missing": []
+        },
+        "camera": {
+          "missing": []
+        },
+        "video_upscale": {
+          "missing": []
+        },
+        "image_upscale": {
+          "missing": []
+        },
+        "spectrum": {
+          "missing": []
+        }
+      },
+      "assets": [
+        {
+          "path": "/extensions/ComfyUI-Endless-H3-AllInOne/studio.js",
+          "status": 200,
+          "bytes": 169472
+        },
+        {
+          "path": "/extensions/ComfyUI-Endless-H3-AllInOne/camera_window.js",
+          "status": 200,
+          "bytes": 29591
+        },
+        {
+          "path": "/extensions/ComfyUI-H3-R2V-CameraLipLock/camera_dynamic_graph.js",
+          "status": 200,
+          "bytes": 20856
+        },
+        {
+          "path": "/extensions/ComfyUI-Endless-H3-AllInOne/fonts/NotoSansKR-variable.woff2",
+          "status": 200,
+          "bytes": 3907916
+        },
+        {
+          "path": "/extensions/ComfyUI-Endless-H3-AllInOne/vendor/build/three.module.js",
+          "status": 200,
+          "bytes": 1274691
+        },
+        {
+          "path": "/extensions/ComfyUI-Endless-H3-AllInOne/vendor/examples/jsm/environments/RoomEnvironment.js",
+          "status": 200,
+          "bytes": 3908
+        },
+        {
+          "path": "/h3r2v_camera_lip_lock/runtime_template",
+          "status": 200,
+          "bytes": 12742
+        }
+      ],
+      "ready": true,
+      "engine_version": "0.38.1",
+      "python": "3.13.9 (tags/v3.13.9:8183fa5, Oct 14 2025, 14:09:13) [MSC v.1944 64 bit (AMD64)]",
+      "startup_seconds": 10.86,
+      "inference_submitted": false,
+      "own_cpu_server_pid": 21328
+    },
+    "verification_scope": "Native installation, node registration and assets only. Existing engine Python packages reused; model weights absent; no inference.",
+    "owner_native_sources_changed_during_packaging": false
+  },
+  "changes": [
+    "Korean illustrated documentation",
+    "Protected image binary excluded from Git",
+    "Obsolete pack-local docs replaced by current links"
+  ],
+  "not_claimed": [
+    "Fresh GPU generation of every feature for this documentation release"
+  ]
+}

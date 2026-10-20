@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+*.log
+.env
+.env.*
+*.safetensors
+*.pt
+*.onnx
+*.bin
+*.dll
+*.pyd
+*.exe
+*.mp4
+*.wav
+*.mov
+node_modules/

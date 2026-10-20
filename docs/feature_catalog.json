@@ -1,0 +1,484 @@
+[
+  {
+    "id": "01-workspace",
+    "title": "YOUR WORKSPACE",
+    "ko": "작업 공간과 패널",
+    "steps": [
+      "1  INPUT RAIL — Add images, video and audio.",
+      "2  THREE PANELS — Settings, preview / outputs, scene map.",
+      "3  GENERATE — Choose an action, then run it."
+    ],
+    "diagram": "Top input rail, below three columns Settings / Preview + Outputs / Scene Map. Mint Generate upper right.",
+    "detail_ko": "상단 입력 레일과 왼쪽 설정, 가운데 미리보기·갤러리, 오른쪽 씬·클립 지도는 서로 다른 역할입니다. 사이드 구분선으로 패널 너비를 조절하고 기본 배치로 돌아옵니다. 씬 지도는 실행 노드가 아닌 상태·결과 탐색용 그래픽입니다.",
+    "detail_en": "The top input rail holds media. Settings, preview/outputs and scene map have separate panels. Use side dividers to adjust widths and the layout reset to restore placement. The scene map is a UI navigation diagram, not the Comfy execution graph.",
+    "steps_ko": [
+      "상단 입력 레일에 이미지·비디오·오디오를 등록합니다.",
+      "왼쪽 설정 · 가운데 미리보기와 아웃풋 · 오른쪽 씬 지도를 사용합니다.",
+      "실행할 동작을 고른 뒤 Generate를 누릅니다."
+    ]
+  },
+  {
+    "id": "02-new-project",
+    "title": "START A PROJECT",
+    "ko": "새 프로젝트와 저장 작업 선택",
+    "steps": [
+      "1  Select + New project.",
+      "2  Name the project and choose its mode.",
+      "3  Set resolution before the first generation."
+    ],
+    "diagram": "Project selector with New project, name, mode. Resolution lock after generation. Note: New geometry needs a new project.",
+    "detail_ko": "저장 작업 목록은 기존 프로젝트와 생성 이력을 다시 여는 곳입니다. 새로운 해상도나 별도 계획은 + 새 작업으로 분리합니다. 기존 클립을 고치려면 원래 프로젝트를 선택해야 컨텍스트·이력·파일이 연결됩니다. 프로젝트 이름은 생성 시작 후 보호됩니다.",
+    "detail_en": "Use the saved-project selector to reopen original outputs and context. Create a new project for another plan or geometry. Regeneration belongs to the original project. The project name is protected once the project exists.",
+    "steps_ko": [
+      "PROJECT WORKSPACE에서 + 새 작업을 누릅니다.",
+      "프로젝트 이름과 일반·시퀀스 모드를 정합니다.",
+      "첫 생성 전에 해상도를 확인합니다. 해상도 변경은 새 작업에서!"
+    ]
+  },
+  {
+    "id": "03-json-import",
+    "title": "JSON PLAN → VIDEO",
+    "ko": "LLM으로 계획 JSON 만들고 불러오기",
+    "steps": [
+      "1  Give your LLM the rules, story and reference order.",
+      "2  Export a plan with scenes, clips and settings.",
+      "3  New project → Import JSON → Review → Generate."
+    ],
+    "diagram": "Rules, story and reference order feed LLM, then JSON scenes/clips/settings, then Import JSON and red cube preview. Note: Media and models are not embedded.",
+    "detail_ko": "작성 채팅에 프롬프트 규칙, 현재 설정을 내보낸 JSON, 스토리, 실제 참고 파일명과 등록 순서를 함께 줍니다. scenes·clips·settings·references가 있는 계획을 받아 새 작업에서 JSON 불러오기로 검증한 뒤 내용을 확인합니다. JSON은 노드 워크플로우와 다른 형식이며 미디어·모델을 내장하지 않습니다. 생성된 클립이 있는 프로젝트에는 전체 계획을 덮어 불러올 수 없습니다. 불러오기가 프로젝트를 자동 전환하지도 않습니다.",
+    "detail_en": "Give an LLM the prompt rules, an exported settings plan, story and actual reference filenames/order. Import the resulting scenes/clips/settings/references plan into a new project, then review it. This is not a node workflow and does not embed media or weights. Whole-plan import is blocked when the project already has generated clips; import does not automatically switch projects.",
+    "steps_ko": [
+      "LLM에 작성 규칙·스토리·참고 파일명과 순서를 전달합니다.",
+      "씬·클립별 프롬프트, 설정, 참고 배치를 담은 JSON을 만듭니다.",
+      "새 작업 → JSON 불러오기 → 설정과 참고 확인 → Generate"
+    ]
+  },
+  {
+    "id": "04-normal-sequence",
+    "title": "NORMAL OR SEQUENCE?",
+    "ko": "일반 모드와 시퀀스 모드",
+    "steps": [
+      "NORMAL — One continuous clip chain.",
+      "SEQUENCE — Scenes contain their own connected clips.",
+      "A scene starts fresh unless continuation is enabled."
+    ],
+    "diagram": "Normal C1→C2→C3→C4. Sequence Scene A [C1→C2], cut, Scene B [C3→C4]. Do not show assembly algorithms.",
+    "detail_ko": "일반 모드는 전체 클립을 하나의 연결 흐름으로 다룹니다. 시퀀스 모드는 씬 안에서 연결하고 씬 경계에서는 기본적으로 새로 시작합니다. 같은 장소·동작의 연속은 한 씬에, 공간·시간·연출이 크게 바뀌는 곳은 새 씬에 둡니다. 프로젝트 워크스페이스의 모드 토글을 사용합니다. 합치기 경로는 18번 안내를 확인합니다.",
+    "detail_en": "Normal mode carries a continuous clip chain. Sequence mode continues within each scene and starts fresh at scene boundaries by default. Keep a continuous action together; create a scene for a substantial setting/time change. Use the workspace mode toggle. See guide 18 for the native assembly path.",
+    "steps_ko": [
+      "일반 모드: 전체 클립을 하나의 연속 흐름으로 생성합니다.",
+      "시퀀스 모드: 씬 안에 여러 클립을 묶어 생성합니다.",
+      "새 씬은 기본적으로 새로 시작합니다. 필요한 곳만 앞 씬을 연결합니다."
+    ]
+  },
+  {
+    "id": "05-scene-plan",
+    "title": "PLAN YOUR SCENES",
+    "ko": "씬 추가·분리·연속 설정",
+    "steps": [
+      "1  Add a scene for a new setting or story beat.",
+      "2  Place connected clips inside that scene.",
+      "3  Enable previous-scene continuation only when needed."
+    ],
+    "diagram": "Scene A two clips then Scene B two clips; a switch between scenes controls continuation. Scene-level prompt and references shown as a small enclosing group.",
+    "detail_ko": "+ 씬 추가로 장면을 만들고 여기서 씬 분리로 현재 클립부터 새 씬으로 나눕니다. 씬 공통 프롬프트에는 그 공간·조명·연출만 적습니다. 씬 첫 클립의 continue_previous는 앞 씬을 이어받을지 정하고, 씬 내부 클립은 연결됩니다. 전체 첫 클립은 앞 컨텍스트가 없습니다. JSON에서 같은 씬의 클립은 붙어서 배치합니다.",
+    "detail_en": "Add a scene or split at the current clip. Put scene-local setting/light/direction in its shared prompt. continue_previous controls the first clip of a scene; clips inside a scene continue. The first project clip has no prior context. Keep a scene's clips contiguous in JSON.",
+    "steps_ko": [
+      "공간·시간·연출이 바뀌는 지점에 새 씬을 만듭니다.",
+      "같은 동작이 이어지는 클립은 같은 씬에 넣습니다.",
+      "앞 씬 연결은 필요한 경우에만 켭니다."
+    ]
+  },
+  {
+    "id": "06-clip-editor",
+    "title": "EDIT CLIPS TOGETHER",
+    "ko": "클립 계획·다중 선택·일괄 입력",
+    "steps": [
+      "1  Click a numbered clip to edit it.",
+      "2  Multi-select clips to compare their editors.",
+      "3  Set prompt, duration and seed, then save."
+    ],
+    "diagram": "Compact numbered clip squares, one selected mint and two multi-selected. Three editor cards with Prompt / Seconds / Seed fields. Include Add clip, Save, JSON export as secondary labels.",
+    "detail_ko": "번호 버튼으로 해당 클립 설정을 엽니다. 다중 선택·전체 선택으로 여러 에디터를 나란히 확인하고 프롬프트·길이·시드를 수정합니다. 일괄 입력은 여러 클립의 문장을 넣는 편의 기능이고 JSON 전체 계획과 다릅니다. 미생성 클립 삭제, 클립 추가, 저장, JSON 내보내기를 상황에 맞게 씁니다. 저장만으로 생성이 시작되지는 않습니다.",
+    "detail_en": "Numbered buttons open clip settings. Multi-select/all-select displays multiple editor cards for prompts, seconds and seeds. Bulk text input differs from full JSON-plan import. Add/remove ungenerated clips as needed, save, or export the plan. Saving does not generate video.",
+    "steps_ko": [
+      "번호 버튼을 눌러 해당 클립의 설정을 엽니다.",
+      "다중 선택으로 여러 클립의 프롬프트를 함께 비교합니다.",
+      "프롬프트·길이·시드를 정하고 저장합니다. 저장은 생성이 아닙니다."
+    ]
+  },
+  {
+    "id": "07-image-routing",
+    "title": "ROUTE THE RIGHT IMAGES",
+    "ko": "공통 이미지 참고와 @picture 규칙",
+    "steps": [
+      "1  Register images in a known order.",
+      "2  Mention @picture_1 in the relevant clip prompt.",
+      "3  Review which images that clip will use."
+    ],
+    "diagram": "Three red cube reference tiles Picture 1 / Picture 2 / Picture 3. Clip A uses @picture_1 and @picture_3, arrows only from those two. Note: Sequence mode uses the active scene's references.",
+    "detail_ko": "공통 참고 사용 시 일반 모드는 프로젝트 참고, 시퀀스 모드는 해당 씬 참고 목록의 순서가 @picture_N 기준입니다. 프롬프트에서 필요한 번호만 부릅니다. 공통·씬 공통 프롬프트에 모든 인물을 넣으면 모든 클립에 불필요한 이미지가 활성화될 수 있습니다. 선택은 클립 전체 기준이며 발화자나 샷마다 LoRA를 따로 분리하는 기능이 아닙니다. 공통 참고 OFF이면 클립 전용 목록과 <Picture N>을 사용합니다.",
+    "detail_en": "With common references enabled, @picture_N follows project reference order in normal mode and the active scene's order in sequence mode. Mention only needed images. Tags in shared/scene prompts also count, so avoid listing the entire cast globally. Selection is clip-wide, not per-shot voice routing. With common references off, use clip-local lists and <Picture N>.",
+    "steps_ko": [
+      "참고 이미지를 사용할 순서대로 등록합니다.",
+      "클립 프롬프트에서 @picture_1처럼 필요한 번호만 부릅니다.",
+      "시퀀스 모드는 해당 씬의 참고 이미지 순서가 기준입니다."
+    ]
+  },
+  {
+    "id": "08-media-references",
+    "title": "VIDEO & AUDIO REFERENCES",
+    "ko": "참고 비디오·오디오와 입력 관리",
+    "steps": [
+      "1  Add video for visual motion and audio for sound guidance.",
+      "2  Choose whether a reference video supplies audio.",
+      "3  Check the active scene and clip before generating."
+    ],
+    "diagram": "Video tile with Use audio switch beside audio waveform tile. Both route to R2V conditioning. Image limit 9, video limit 3, audio limit 3 as small labels.",
+    "detail_ko": "이미지 최대 9장, 참고 비디오·오디오는 각각 최대 3개입니다. 비디오의 소리 참고 스위치를 확인합니다. 참고 오디오는 목소리·음향 안내이며 프로젝트 립싱크 오디오와 용도가 다릅니다. 공통 비디오·오디오는 이미지의 @picture 태그처럼 자동 필터링되지 않습니다. 파일 선택·검색으로 기존 입력을 찾고, 순서 변경·제거 후 번호를 다시 확인합니다. 파일 자체가 실행 환경에 있어야 합니다.",
+    "detail_en": "Up to 9 images, 3 videos and 3 audio references are supported. Check a video's audio-use switch. Reference audio guides sound; it is distinct from the project lipsync track. Common videos/audio are not filtered by @picture tags. Search existing files, reorder/remove inputs and recheck their scope. Files must exist in the execution environment.",
+    "steps_ko": [
+      "참고 비디오는 동작, 참고 오디오는 음향 안내에 사용합니다.",
+      "비디오의 소리 참고 사용 여부를 확인합니다.",
+      "현재 씬과 클립에 사용할 자료인지 확인한 뒤 생성합니다."
+    ]
+  },
+  {
+    "id": "09-i2v-keyframes",
+    "title": "I2V START & END FRAMES",
+    "ko": "I2V 시작·끝 이미지와 생성 방식",
+    "steps": [
+      "I2V — Begin from an opening image.",
+      "R2V — Guide generation with reference media.",
+      "T2V — Start from text. End images are optional in I2V."
+    ],
+    "diagram": "Three mode chips I2V / R2V / T2V; I2V selected with start cube image → generated motion → optional end image. Note: A continued clip uses its incoming context.",
+    "detail_ko": "클립 생성 방식을 I2V·R2V·T2V에서 고릅니다. 키프레임 입력은 I2V에서 표시되며 시작 이미지와 선택 끝 이미지를 설정합니다. 이어지는 클립은 앞 AV 컨텍스트를 사용하므로 시작 이미지를 매 클립 강제 재적용하는 방식으로 이해하지 않습니다. 새 씬의 독립 시작과 이어지는 클립을 구분해서 계획합니다.",
+    "detail_en": "Choose I2V, R2V or T2V per clip. I2V exposes opening and optional closing image inputs. Continued clips use incoming AV context; an opening image is not forcibly reapplied to every continuation. Distinguish independent scene starts from continued clips.",
+    "steps_ko": [
+      "I2V는 시작 이미지, R2V는 참고 자료, T2V는 텍스트를 사용합니다.",
+      "I2V에서 시작 이미지와 선택 끝 이미지를 넣습니다.",
+      "이어지는 클립은 앞 클립의 컨텍스트를 사용합니다."
+    ]
+  },
+  {
+    "id": "10-lipsync",
+    "title": "DIALOGUE & LIPSYNC AUDIO",
+    "ko": "립싱크 오디오·대사·음성 생성",
+    "steps": [
+      "1  Leave the lipsync track empty for H3-generated speech.",
+      "2  Supply a track to guide project dialogue timing.",
+      "3  Review lips, speakers and audio after generation."
+    ],
+    "diagram": "Audio waveform extending under Scene A and Scene B across a project timeline, versus empty track with H3 speech. Note: Reference audio is a separate input.",
+    "detail_ko": "프로젝트 공통 립싱크 오디오는 전체 시간축의 트랙입니다. 비워 두면 프롬프트에 따라 H3가 음성을 생성합니다. 참고 오디오나 음성 LoRA와 동일한 입력이 아닙니다. 한 클립에 대사·화자가 과도하면 발음·화자 혼합·잡음이 생길 수 있으므로 실제 결과를 듣고 확인합니다. 캐릭터별 음성 LoRA 자동 분리 UI는 구현된 기능으로 안내하지 않습니다.",
+    "detail_en": "The common lipsync track spans the project timeline; empty means H3 generates audio from the prompt. It is not reference audio or a voice LoRA. Check actual speech, speakers and lip movement, especially in crowded dialogue. Character-specific voice-LoRA routing is not implemented.",
+    "steps_ko": [
+      "립싱크 오디오를 비우면 H3가 프롬프트에 따라 음성을 생성합니다.",
+      "오디오를 넣으면 프로젝트 전체 시간축의 대사 안내로 사용합니다.",
+      "완성 후 입 모양·화자·대사·잡음을 직접 확인합니다."
+    ]
+  },
+  {
+    "id": "11-resolution",
+    "title": "SET OUTPUT GEOMETRY",
+    "ko": "종횡비·메가픽셀·해상도 잠금",
+    "steps": [
+      "1  Choose aspect ratio and megapixel preset.",
+      "2  Check the actual pixel dimensions shown.",
+      "3  Start a new project to change locked geometry."
+    ],
+    "diagram": "Aspect ratio 16:9 and megapixel preset controls yield a W × H preview; padlock appears after generation. Do not state a fixed pixel value for every MP preset.",
+    "detail_ko": "클립 계획 아래 해상도 영역에서 종횡비·메가픽셀을 선택하고 실제 가로×세로 표시값을 확인합니다. MP 숫자만으로 특정 짧은 변 픽셀을 단정하지 않습니다. 이미 만들어진 프로젝트의 해상도는 컨텍스트·병합 호환성 때문에 보호됩니다. 다른 해상도는 새 프로젝트로 시작합니다. 업스케일 배율은 이 원본 생성 해상도와 별개입니다.",
+    "detail_en": "Choose aspect ratio/MP below clip planning and inspect the actual W × H display. MP alone does not specify a fixed short edge. Existing project geometry is protected for context/assembly compatibility; create a new project to change it. Upscaling is separate from generation resolution.",
+    "steps_ko": [
+      "종횡비와 메가픽셀 프리셋을 선택합니다.",
+      "표시된 실제 가로×세로 픽셀을 확인합니다.",
+      "생성 후 보호된 해상도를 바꾸려면 새 프로젝트를 만듭니다."
+    ]
+  },
+  {
+    "id": "12-models-loras",
+    "title": "MODELS & LORA STACK",
+    "ko": "모델·Turbo·참고·추가 LoRA",
+    "steps": [
+      "1  Select the installed model, encoder and both VAEs.",
+      "2  Choose a compatible Turbo LoRA and strength.",
+      "3  Add optional LoRAs; search and refresh the lists."
+    ],
+    "diagram": "Model / Text encoder / Video VAE / Audio VAE stack above Turbo LoRA, Reference adapter and Additional LoRA rows. Note: Reference adaptation is not voice training.",
+    "detail_ko": "공통 설정에서 H3 모델·인코더·비디오 VAE·오디오 VAE를 실제 파일명으로 선택합니다. Turbo LoRA의 모델 계열과 스텝 설정을 맞춥니다. 참고 LoRA는 참고 적응용이며 음성 전용 LoRA가 아닙니다. 추가 LoRA는 목록에서 검색하고 강도·ON/OFF를 설정합니다. 파일을 새로 넣었으면 모델·LoRA 새로고침을 사용합니다. 특정 인물에게만 적용되는 자동 화자 마스크가 아닙니다.",
+    "detail_en": "Select actual model, encoder and video/audio VAE files. Match Turbo family and sampling setup. The reference LoRA adapts reference conditioning; it is not a voice-training feature. Search additional LoRAs, set strengths/toggles and refresh after adding files. A LoRA stack is not an automatic per-character speaker mask.",
+    "steps_ko": [
+      "설치한 모델·인코더·비디오 VAE·오디오 VAE를 선택합니다.",
+      "모델과 맞는 Turbo LoRA, 스텝, 강도를 설정합니다.",
+      "추가 LoRA는 검색·새로고침·ON/OFF로 관리합니다."
+    ]
+  },
+  {
+    "id": "13-optimizers",
+    "title": "OPTIMIZERS & MEMORY",
+    "ko": "Attention·캐시·메모리 분할",
+    "steps": [
+      "1  Begin with a known working baseline.",
+      "2  Change attention, cache or chunks one at a time.",
+      "3  Compare speed, memory, picture and sound."
+    ],
+    "diagram": "Three independent controls Attention, Cache, Feed-forward chunks lead to a four-cell review: Time / VRAM / Video / Audio. No guaranteed speed gains.",
+    "detail_ko": "설치된 커널에 맞는 Attention, fp16 누산, 캐시, feed-forward 분할을 선택합니다. match/max 참고 크기는 입력 처리 비용과 보존 정보가 달라 속도·메모리에 영향을 줍니다. 메모리 분할은 프레임 보간이나 자동 화질 복원이 아닙니다. Sage·Spectrum 등은 환경·분기에 따라 지원 여부가 다르므로 한 번에 하나씩 바꾸고 기존 결과와 비교합니다. OOM이 없다는 이유만으로 품질까지 동일하다고 판단하지 않습니다.",
+    "detail_en": "Choose supported attention/accumulation/cache/feed-forward chunk settings. Reference sizing match/max changes input cost and retained detail. Chunking is not interpolation or automatic restoration. Kernel/cache support depends on environment/branch. Change one setting at a time and compare output as well as speed/VRAM.",
+    "steps_ko": [
+      "정상 작동하던 기본 설정을 기준으로 시작합니다.",
+      "Attention·캐시·메모리 분할을 한 번에 하나씩 바꿉니다.",
+      "시간·VRAM뿐 아니라 영상과 음성도 비교합니다."
+    ]
+  },
+  {
+    "id": "14-generate",
+    "title": "CHOOSE AN ACTION, GENERATE",
+    "ko": "클립·전체·합치기·다음 예약",
+    "steps": [
+      "1  Choose Clip, All clips, or All + Assemble.",
+      "2  Press Generate to run the selected action.",
+      "3  Queue next when working clip by clip."
+    ],
+    "diagram": "Action selector three choices above large two-tone Generate, mint idle and grey running. Queue next and Stop smaller. Note: Save does not submit a generation job.",
+    "detail_ko": "클립 생성은 현재 선택 한 클립, 전체 생성은 전체 계획, 전체 생성+합치기는 생성 후 조립까지 실행하는 모드입니다. 별도의 Generate가 선택 동작을 시작합니다. 다음 예약 생성은 순차 작업을 돕고 새 Run ID를 매번 만드는 기능이 아닙니다. 실행 상태·오류를 확인한 뒤 중지를 사용합니다. 업스케일은 별도 설정이 켜진 경우에만 해당 경로로 실행됩니다.",
+    "detail_en": "Clip generates the selected clip; All clips follows the plan; All + Assemble adds final assembly. Generate executes the selected action. Queue next helps sequential work without creating a new run each time. Stop/cancel acts on the app's work. Upscaling follows its own enabled setting, not the label alone.",
+    "steps_ko": [
+      "클립 생성 / 전체 생성 / 전체 생성+합치기 중 선택합니다.",
+      "Generate를 눌러 선택한 동작을 실행합니다.",
+      "한 클립씩 작업할 때는 다음 예약 생성을 사용합니다."
+    ]
+  },
+  {
+    "id": "15-regenerate",
+    "title": "RETRY ONE CLIP",
+    "ko": "선택 클립 재생성과 이전 결과",
+    "steps": [
+      "1  Reopen the original project and select a clip.",
+      "2  Edit that clip, choose Clip, then Generate.",
+      "3  Review the new revision and downstream continuity."
+    ],
+    "diagram": "C1→C2→C3 with C2 new revision branching beside C2 old. C1 and C3 stored outputs remain. Orange stale marker on dependent C3. Note: No automatic perfect bidirectional fit.",
+    "detail_ko": "기존 프로젝트에서 다시 만들 번호를 고른 뒤 클립 생성으로 Generate합니다. 이전 결과는 이력으로 남고 나머지 저장 파일을 자동 삭제하지 않습니다. 변경된 결과에 의존하는 뒤 클립은 다음 독립 경계까지 재생성 필요 상태가 될 수 있습니다. 뒤 클립을 고정한 완벽한 양방향 복원이나 전체 자동 재생성을 보장하지 않습니다. 새 프로젝트로 바꾸면 원래 컨텍스트를 찾을 수 없습니다.",
+    "detail_en": "Select an existing clip in its original project, edit it and run Clip generation. Prior revisions and other stored results remain. Dependent later clips may become stale until the next independent boundary. This is not guaranteed bidirectional fitting or automatic regeneration of the whole project.",
+    "steps_ko": [
+      "원래 프로젝트를 열고 다시 만들 클립 번호를 선택합니다.",
+      "클립을 수정한 뒤 클립 생성 → Generate를 누릅니다.",
+      "이전 결과와 새 결과를 비교하고 뒤 클립 연결을 확인합니다."
+    ]
+  },
+  {
+    "id": "16-scene-map",
+    "title": "READ THE SCENE MAP",
+    "ko": "씬·클립 지도와 호버 미리보기",
+    "steps": [
+      "1  Follow scene groups and numbered clip cards.",
+      "2  Compare original and regenerated branches.",
+      "3  Hover completed clips; watch live work in progress."
+    ],
+    "diagram": "Scene group two clip cards with beside-card revision branch, mint connected line and orange broken line. Hover thumbnail red cube for done, progress thumbnail for running, Failed text without picture.",
+    "detail_ko": "씬·클립 번호와 재생성 가지로 지금 어떤 결과를 보는지 확인합니다. 초록 연결과 주황 단절·갱신 표시를 상태 텍스트와 함께 읽습니다. 완료 항목의 호버 미리보기와 생성 중 라이브 미리보기, 실패 텍스트는 서로 다릅니다. 지도 카드는 실제 노드를 추가하는 기능이 아닙니다.",
+    "detail_en": "Scene labels, clip numbers and revision branches identify the selected result. Read connection colours with status text. Completed hover previews, running live previews and failure labels have different roles. Map cards do not create Comfy execution nodes.",
+    "steps_ko": [
+      "씬 묶음과 클립 번호로 현재 결과의 위치를 확인합니다.",
+      "이전 결과 옆에 붙은 재생성 가지를 비교합니다.",
+      "완료 항목은 마우스를 올려 미리보고, 생성 중에는 진행 화면을 봅니다."
+    ]
+  },
+  {
+    "id": "17-gallery",
+    "title": "OUTPUTS ACROSS PROJECTS",
+    "ko": "갤러리 필터·즐겨찾기·삭제·저장소",
+    "steps": [
+      "1  Switch All projects or Current project.",
+      "2  Preview results, revisions and favorites.",
+      "3  Multi-select for trash; use Storage to find files."
+    ],
+    "diagram": "All projects dropdown and Current project option above cube video cards, selection ticks, Refresh / Favorite / Storage / Delete / Trash. Do not invent permanent deletion semantics.",
+    "detail_ko": "아웃풋은 전체 프로젝트 또는 현재 프로젝트로 필터링합니다. 생성 결과·합본·이전 버전을 눌러 미리보고 즐겨찾기만 볼 수 있습니다. 여러 항목을 선택해 삭제·휴지통 관리를 하고 저장소로 실제 파일 위치를 찾습니다. 새로고침은 목록 갱신입니다. 갤러리에서 업스케일은 지원되는 전체 합본 한 개를 선택해야 하며 모든 클립을 일괄 처리하는 버튼으로 이해하지 않습니다.",
+    "detail_en": "Filter all/current projects, preview clip/export/revision results and show favorites. Use multi-selection for trash operations and Storage for file location. Refresh updates the list. Gallery upscaling expects one eligible assembled export, not arbitrary bulk clips.",
+    "steps_ko": [
+      "전체 프로젝트 / 현재 프로젝트로 결과를 필터링합니다.",
+      "클립·합본·이전 결과를 미리보고 즐겨찾기로 관리합니다.",
+      "여러 항목을 선택해 삭제하고 저장소로 파일 위치를 확인합니다."
+    ]
+  },
+  {
+    "id": "18-assembly",
+    "title": "HOW NATIVE ASSEMBLY WORKS",
+    "ko": "씬 안 Endless·씬 사이 FFmpeg",
+    "steps": [],
+    "diagram": "Native only: Endless within scenes, then FFmpeg between scenes. Native normal uses FFmpeg. No comparison with other apps.",
+    "detail_ko": "원본 시퀀스 모드는 씬별 AV 컨텍스트를 Endless 스티처로 조립한 다음 완성 씬을 FFmpeg로 자동 연결합니다. 최종 씬 사이 영상은 스트림 복사이고 오디오는 길이 보정 후 AAC 재인코딩될 수 있습니다. 원본 일반 모드의 최종 합치기는 FFmpeg 클립 연결입니다. Endless 재조립에는 MP4뿐 아니라 AV 아카이브가 필요합니다.",
+    "detail_en": "Native sequence mode stitches each scene's AV overlap with Endless, then automatically joins completed scenes via FFmpeg. Final scene video is stream-copied; audio may be aligned and AAC re-encoded. Native normal concatenates MP4 clips with FFmpeg. Keep AV archives for Endless reassembly.",
+    "steps_ko": [
+      "시퀀스 모드: 씬 안 클립은 Endless로 합칩니다.",
+      "완성된 씬들은 FFmpeg로 자동 연결합니다.",
+      "일반 모드: 저장된 클립을 FFmpeg로 연결합니다."
+    ]
+  },
+  {
+    "id": "19-upscaling",
+    "title": "UPSCALE A FINAL EXPORT",
+    "ko": "선택 합본 업스케일·색상·저장 품질",
+    "steps": [
+      "1  Select one eligible assembled export in Outputs.",
+      "2  Set scale, memory profile, color and quality.",
+      "3  Run upscale and compare with the source."
+    ],
+    "diagram": "One selected complete export tile→Scale / Memory / Auto color / Output quality→larger cube frame. Note: NVIDIA runtime is installed separately. Higher quality means larger files.",
+    "detail_ko": "선택 영상 업스케일은 지원되는 합본 한 개를 고른 뒤 별도로 실행합니다. 배율·메모리 프로파일·Auto Color·출력 품질을 확인합니다. 생성 해상도와 업스케일 배율은 별개이고, 품질 95는 저장 용량이 매우 클 수 있습니다. 수치가 같아도 코덱·인코더별 용량·손실이 같지 않습니다. NVIDIA VFX와 필요한 FRUC 런타임은 별도 설치입니다. 원본 파일과 전 구간의 색·형태·음성을 비교합니다.",
+    "detail_en": "Select one eligible assembled export for independent gallery upscaling. Set scale, memory profile, auto colour and output quality. Quality 95 can produce very large files; equal numbers across encoders do not imply equal loss/size. Install required NVIDIA runtimes separately. Compare colour, geometry and audio throughout the output.",
+    "steps_ko": [
+      "아웃풋에서 지원되는 전체 합본 한 개를 선택합니다.",
+      "배율·메모리 프로파일·색상·출력 품질을 정합니다.",
+      "선택 영상 업스케일을 실행하고 원본과 비교합니다."
+    ]
+  },
+  {
+    "id": "20-motion-repair",
+    "title": "MOTION REPAIR & INTERPOLATION",
+    "ko": "모션 리페어·가변 프레임 보간",
+    "steps": [
+      "1  Keep motion repair Off for a baseline.",
+      "2  Enable a supported mode and adjust strength.",
+      "3  Check fast motion, faces, edges and audio sync."
+    ],
+    "diagram": "Three frames A damaged B C, selective flow repair on B with small mint region. Caption: Selective repair, not recovery of missing original detail. No quality guarantee.",
+    "detail_ko": "모션 리페어는 선택된 시간 구간·영역의 흐름과 중간 프레임 후보를 이용하는 후처리입니다. 원본에서 사라진 얼굴·손 디테일을 확실하게 재생성하는 기능은 아닙니다. 모드·강도에 따라 빠른 동작에서 번짐·잔상·가림 오류가 생길 수 있습니다. 시작 워크플로우는 OFF입니다. FRUC/NVOFA 지원 여부와 런타임을 확인하고 오디오 싱크·프레임 수·시간도 함께 비교합니다.",
+    "detail_en": "Selective temporal/flow repair uses neighboring frames and midpoint candidates. It does not guarantee reconstruction of detail already absent from the source. Strength/mode can introduce ghosting or occlusion errors. The starter workflow uses Off. Check runtime support, frame count, duration and sync alongside fast-action image quality.",
+    "steps_ko": [
+      "모션 리페어 OFF 결과를 기준으로 먼저 확인합니다.",
+      "지원 모드를 켠 뒤 강도를 조절합니다.",
+      "빠른 동작·얼굴·가장자리·오디오 싱크를 비교합니다."
+    ]
+  },
+  {
+    "id": "21-background-refresh",
+    "title": "REFRESH A DEGRADED BACKGROUND",
+    "ko": "재생성 전용 배경 참고 갱신",
+    "steps": [
+      "1  Select an already-generated clip.",
+      "2  Use a new image or a frame from project Clip 1.",
+      "3  Retry one clip, or explicitly regenerate from here."
+    ],
+    "diagram": "Existing clip→new background reference image OR project Clip 1 frame→regenerated clip. Two clearly distinct routes: One clip / From here onward. Note: This is reference guidance, not a background-only mask.",
+    "detail_ko": "생성된 클립을 다시 만들 때만 쓰는 옵션입니다. 새 배경 이미지 또는 프로젝트 전체 1번 클립의 시점 프레임을 고릅니다. 가능하면 인물이 적은 참고를 씁니다. 이 기능은 배경만 고정하는 분할 마스크가 아니므로 인물에도 영향을 줄 수 있습니다. 한 클립만 다시 만들 때는 클립 생성+Generate, 이 클립부터 재생성은 선택 번호 이후 전체 재생성을 예약합니다. 이후 완료 클립에도 적용은 설정 복사입니다.",
+    "detail_en": "Available for regeneration of an existing clip. Choose a new background image or a timed frame from the project's global Clip 1. Guidance may also affect people; it is not a background-only mask. Clip + Generate retries one. Regenerate from here queues the remainder. Apply to later completed clips copies settings only.",
+    "steps_ko": [
+      "이미 생성된 클립을 선택해 배경 참고 갱신을 켭니다.",
+      "새 이미지 또는 프로젝트 첫 클립의 화면을 참고로 고릅니다.",
+      "한 클립 재생성과 이 클립부터 재생성을 구분해서 실행합니다."
+    ]
+  },
+  {
+    "id": "22-clip-refiner",
+    "title": "CLIP REFINER: USE SELECTIVELY",
+    "ko": "클립별 리파이너 ON/OFF·강도·참조",
+    "steps": [
+      "1  Decide per clip: Off or On.",
+      "2  When On, choose a valid earlier reference and strength.",
+      "3  Compare texture; keep scene changes conservative."
+    ],
+    "diagram": "Clip A texture statistic feeding clip B only if On; clip C Off bypass. Strength slider shown low. Note: Not a face, motion or voice repair tool.",
+    "detail_ko": "리파이너는 클립별로 OFF/ON을 정합니다. 켜면 강도와 앞선 참조 클립을 고릅니다. 같은 씬의 통계와 비교하고 새 독립 씬은 이전 공간의 질감을 강하게 가져오지 않게 합니다. 첫 독립 클립은 측정 기준이 됩니다. 이 도구는 얼굴 복원·발화자 분리·모션 리페어가 아닙니다. 프롬프트가 자동으로 완벽한 강도를 추론하지 않으므로 비교 후 유지합니다.",
+    "detail_en": "Choose Off/On per clip, then strength and a valid earlier reference. Compare within a scene; avoid carrying unrelated texture statistics across scene changes. An independent first clip supplies measurements. It is not face restoration, speaker routing or motion repair, and prompt text does not guarantee an optimal strength.",
+    "steps_ko": [
+      "클립마다 리파이너 OFF / ON을 따로 정합니다.",
+      "ON이면 앞선 참조 클립과 강도를 선택합니다.",
+      "질감을 비교하고 장면 전환에서는 보수적으로 사용합니다."
+    ]
+  },
+  {
+    "id": "23-camera-directing",
+    "title": "OPEN CAMERA DIRECTION",
+    "ko": "카메라 창·샷·이동·렌즈·호버",
+    "steps": [
+      "1  Add a reference video in R2V.",
+      "2  Open Camera direction and choose a control.",
+      "3  Hover its animated guide; generate from the main UI."
+    ],
+    "diagram": "R2V video tile enables Camera direction button; separate editor window with Shot / Angle / Move / Lens / Focus controls and animated guide symbol, linked back to main Generate/preview.",
+    "detail_ko": "R2V 참고 비디오를 넣으면 카메라 디렉팅을 사용할 수 있습니다. 버튼은 편집 창을 열고 각 기능 선택은 창 안에서 합니다. 샷·앵글·무빙·렌즈·포커스 등을 호버 애니메이션으로 확인합니다. 모델·샘플링·해상도·결과 미리보기·Generate는 본 UI와 연결됩니다. 모드별로 크롭·생성·깊이 안내·선택 어댑터 경로가 다르며 큰 회전 성공을 보장하지 않습니다.",
+    "detail_en": "R2V reference video enables camera direction. The button opens its editor; choose controls there and inspect animated hover guides. Model/sampling/resolution, results and Generate stay integrated with the main UI. Modes may use crops, generation, depth guidance or optional adapters. Large rotation success is not guaranteed.",
+    "steps_ko": [
+      "R2V에 참고 비디오를 넣고 카메라 디렉팅을 엽니다.",
+      "샷·앵글·무빙·렌즈·포커스를 고르고 호버 안내를 봅니다.",
+      "본 UI의 Generate로 실행하고 미리보기에서 확인합니다."
+    ]
+  },
+  {
+    "id": "24-camera-segments",
+    "title": "CAMERA PATHS BY SEGMENT",
+    "ko": "세그먼트·각도·줌·속도·립싱크",
+    "steps": [
+      "1  Divide the source video into segments.",
+      "2  Set angle, zoom, speed and easing for each segment.",
+      "3  Review transitions, identity and lipsync in the result."
+    ],
+    "diagram": "Video timeline with three labelled segments, numeric yaw/pitch/zoom fields and simple camera path around red cube. Note: A guide animation is not a generated result.",
+    "detail_ko": "참고 비디오의 시작·끝 프레임을 기준으로 구간을 나누고 초 단위 표시와 대조합니다. 수치 앵글·줌·이동·속도·이징을 조절해 구간별 경로를 지정합니다. 필요한 모델·어댑터는 모드마다 다르므로 링크 안내를 확인합니다. 호버 더미는 컨트롤 설명용이며 실제 품질 증거가 아닙니다. 가림·인물 회전·입 모양이 바뀌면 원본 오디오와 함께 확인합니다.",
+    "detail_en": "Split source frame ranges and verify their time display. Set numeric angles, zoom/movement, speed and easing per segment. Required models/adapters depend on the mode. Hover dummy animations explain controls; they are not evidence of generated quality. Review occlusion, identity and lips against the source sound.",
+    "steps_ko": [
+      "참고 비디오를 시작·끝 프레임으로 구간 분할합니다.",
+      "구간마다 각도·줌·이동·속도·이징을 조절합니다.",
+      "완성 후 연결·인물 유지·립싱크를 확인합니다."
+    ]
+  },
+  {
+    "id": "25-settings-vram",
+    "title": "SETTINGS & VRAM RESET",
+    "ko": "공통 설정·폰트·VRAM 리셋",
+    "steps": [
+      "1  Open common settings for shared generation options.",
+      "2  Adjust the UI font scale for readability.",
+      "3  Use VRAM reset when the generation queue is idle."
+    ],
+    "diagram": "Gear menu showing shared settings and UI font scale; idle queue icon before VRAM reset. Note: Reset is not a promise to free memory held by other programs.",
+    "detail_ko": "톱니바퀴에서 공통 모델·샘플링 등 설정을 엽니다. UI 폰트 배율로 표시 크기를 바꾸고 패널 너비·스크롤과 함께 조절합니다. VRAM 리셋은 작업이 끝난 뒤 모델·캐시 해제를 요청하는 기능입니다. 다른 프로세스나 드라이버가 점유한 메모리까지 강제로 비우는 기능은 아닙니다. 생성 도중 임의로 서버 재시작할 필요는 없습니다.",
+    "detail_en": "Use the gear for shared model/sampling settings and UI font scale. Combine font sizing with panel widths/scrolling. VRAM reset requests model/cache release when idle; it cannot promise to free allocations held by other processes or drivers. Do not treat it as a required server restart.",
+    "steps_ko": [
+      "톱니바퀴에서 공통 생성 설정을 엽니다.",
+      "UI 폰트 배율로 읽기 편한 글자 크기를 정합니다.",
+      "작업이 끝난 뒤 VRAM 리셋으로 모델·캐시 해제를 요청합니다."
+    ]
+  },
+  {
+    "id": "26-view-nodes",
+    "title": "INSPECT THE EXECUTION GRAPH",
+    "ko": "노드 보기와 스튜디오 복귀",
+    "steps": [
+      "1  Select a clip and open View nodes.",
+      "2  Inspect the actual connected execution graph.",
+      "3  Return to the studio to continue planning."
+    ],
+    "diagram": "Studio selected clip→View nodes→connected Comfy nodes→Return to studio. Distinguish scene map from actual execution graph.",
+    "detail_ko": "노드 보기는 현재 선택 클립의 실제 실행 구조를 확인할 때 씁니다. 오른쪽 씬 지도와 달리 모델·조건·샘플링·저장 연결을 볼 수 있습니다. 올인원으로 돌아가기로 편집 UI에 복귀합니다. 임의로 끊은 그래프와 저장된 계획이 자동으로 양방향 동기화된다고 가정하지 말고, 공개 예제는 스튜디오 계획을 기준으로 사용합니다.",
+    "detail_en": "View nodes exposes the selected clip's execution graph, unlike the scene map. Inspect model/conditioning/sampling/save connections, then return to the studio. Do not assume arbitrary graph edits synchronize back into the saved plan. The examples use the studio plan as the source of truth.",
+    "steps_ko": [
+      "클립을 선택하고 노드 보기를 누릅니다.",
+      "실제 실행 그래프의 조건·샘플링·저장 연결을 확인합니다.",
+      "올인원으로 돌아가기로 스튜디오 편집을 계속합니다."
+    ]
+  },
+  {
+    "id": "27-installation",
+    "title": "INSTALL THE NATIVE EDITION",
+    "ko": "원본판 설치·의존성·모델·출처",
+    "steps": [
+      "1  Choose a fresh H3-compatible ComfyUI folder.",
+      "2  Install native source packs and Python dependencies.",
+      "3  Add models / LoRAs, then load the starter workflow."
+    ],
+    "diagram": "Native ComfyUI only: main.py folder → Install.cmd → actual Comfy Python dependencies → models and starter workflow. No separate app.",
+    "detail_ko": "native 설치 도구에 main.py가 있는 ComfyUI 폴더를 지정합니다. 이미 같은 노드 폴더가 있으면 덮어쓰지 않고 멈춥니다. 해당 Comfy Python에 요구 패키지를 설치하고 모델·LoRA를 링크에서 받아 실제 파일명을 선택합니다. 새 시작 워크플로우에는 개인 자료나 프로젝트가 없습니다. Git 소스판은 보호된 이미지 업스케일 바이너리를 제외하며 전체 네이티브 배포 ZIP에는 기존 바이너리가 별도 고지되어 있습니다. NVIDIA 런타임·가중치는 어느 패키지에도 없습니다.",
+    "detail_en": "Point the native installer at a compatible ComfyUI containing main.py. Existing packs cause a preflight refusal. Install dependencies in that Comfy Python, download weights separately and select actual filenames. The clean workflow contains no personal media. Git source excludes the protected image-upscaler binary; the full native ZIP discloses it separately. Neither bundle includes weights or NVIDIA runtimes.",
+    "steps_ko": [
+      "H3를 지원하는 새 ComfyUI의 main.py 폴더를 선택합니다.",
+      "원본 노드와 해당 Python의 의존성을 설치합니다.",
+      "모델·LoRA는 별도로 받고 시작 워크플로우를 불러옵니다."
+    ]
+  }
+]

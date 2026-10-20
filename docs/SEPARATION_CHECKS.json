@@ -1,0 +1,10 @@
+{
+  "separate_native_repository": true,
+  "no_sdk_app_or_sdk_event_module": true,
+  "native_runtime_files_checked": 202,
+  "manual_local_links": 71,
+  "korean_feature_images": 27,
+  "assembly_and_install_guides_native_only": true,
+  "source_model_and_nvidia_binaries_excluded": true,
+  "installed_comfy_modified": false
+}

@@ -1,0 +1,14 @@
+{
+  "date": "2026-10-21",
+  "python_parsed": 137,
+  "original_javascript_checked": 29,
+  "runtime_files_identical_to_snapshot": 201,
+  "runtime_publication_changes": [
+    "optional_custom_nodes/ComfyUI-Spectrum-MiniMax-H3/comfyui_spectrum_h3/vae_profile.py"
+  ],
+  "local_doc_links_checked": 95,
+  "korean_images": 27,
+  "source_excludes_proprietary_binaries_and_user_media": true,
+  "new_gpu_inference": false,
+  "independent_repository": "https://github.com/ych8836-ops/flagship-scene-ui-native"
+}

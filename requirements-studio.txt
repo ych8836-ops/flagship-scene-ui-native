@@ -1,0 +1,10 @@
+# Use the selected ComfyUI Python. Its torch/CUDA environment must already work.
+av
+imageio-ffmpeg
+color-matcher
+matplotlib
+mss
+opencv-python
+ultralytics
+scipy
+# InsightFace, SageAttention and local Whisper are feature-specific; see INSTALL_KO.md.

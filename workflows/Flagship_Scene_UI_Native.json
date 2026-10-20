@@ -1,0 +1,59 @@
+{
+  "last_node_id": 1,
+  "last_link_id": 0,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "EndlessH3AllInOne",
+      "pos": [
+        40,
+        80
+      ],
+      "size": [
+        1800,
+        1100
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "project_config",
+          "type": "STRING",
+          "widget": {
+            "name": "project_config"
+          },
+          "link": null
+        }
+      ],
+      "outputs": [
+        {
+          "name": "project_report",
+          "type": "STRING",
+          "links": null,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EndlessH3AllInOne"
+      },
+      "widgets_values": [
+        "{\"name\": \"새 프로젝트\", \"project_id\": null, \"plan\": {\"settings\": {\"model\": \"minimax_h3_fl2va_pruned_int8_convrot.safetensors\", \"clip\": \"qwen3vl_32b_minimax_h3_int8_convrot.safetensors\", \"video_vae\": \"minimax_h3_video_vae_fp16.safetensors\", \"audio_vae\": \"minimax_h3_audio_vae_fp32.safetensors\", \"turbo_lora\": \"minimax\\\\minimax_h3_fl2v_turbo_8step_v1.0_comfyui_bf16.safetensors\", \"turbo_strength\": 0.9, \"reference_lora\": \"minimax\\\\minimax_h3_ref_lora_layer20-49adaln_proj_rank_256_bf16.safetensors\", \"reference_strength\": 0.0, \"width\": 576, \"height\": 768, \"steps\": 8, \"sampler\": \"res_multistep\", \"scheduler\": \"sgm_uniform\", \"shift_video\": 12.0, \"shift_audio\": 3.0, \"context_length\": \"22\", \"sage\": false, \"chunks\": 2, \"attention_mode\": \"off\", \"fp16_accumulation\": false, \"cache_mode\": \"off\", \"easycache_threshold\": 0.12, \"spectrum_blend\": 0.5, \"refiner\": false, \"refiner_strength\": 0.1, \"ref_image_size\": \"match\", \"shared_prompt\": \"\", \"loras\": [], \"audio_file\": \"\", \"upscale\": false, \"scale\": 2.0, \"memory_profile\": \"Auto\", \"motion_repair\": \"Off\", \"motion_repair_strength\": 30, \"color_treatment\": \"Auto Natural\", \"output_quality\": 95}, \"sequence_mode\": false, \"references\": {\"images\": [], \"videos\": [], \"audios\": []}, \"scenes\": [{\"id\": \"scene_1\", \"name\": \"씬 1\", \"prompt\": \"\", \"continue_previous\": false, \"references\": {\"images\": [], \"videos\": [], \"audios\": []}}], \"clips\": [{\"prompt\": \"\", \"seconds\": 5.0, \"mode\": \"I2V\", \"first_image\": \"\", \"last_image\": \"\", \"images\": [], \"videos\": [], \"audios\": [], \"use_common_references\": true, \"seed\": -1, \"scene_id\": \"scene_1\", \"refiner\": {\"mode\": \"off\", \"strength\": 0.1, \"reference_clip\": 1, \"reason\": \"\"}}]}}"
+      ],
+      "title": "Flagship Scene UI"
+    }
+  ],
+  "links": [],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.8,
+      "offset": [
+        0,
+        0
+      ]
+    }
+  },
+  "version": 0.4
+}

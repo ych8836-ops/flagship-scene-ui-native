@@ -1,0 +1,295 @@
+{
+  "90": {
+    "class_type": "H3R2VCameraTimeline",
+    "inputs": {
+      "source_video": "",
+      "camera_plan_json": "{\"segments\":[{\"start_frame\":0,\"end_frame\":81,\"shot\":\"wide shot\",\"movement\":\"slow dolly in\",\"speed\":\"moderate\",\"strength\":0.65,\"center_x\":0.5,\"center_y\":0.35},{\"start_frame\":81,\"end_frame\":162,\"shot\":\"medium shot\",\"movement\":\"slow pan right\",\"speed\":\"moderate\",\"strength\":0.5,\"center_x\":0.5,\"center_y\":0.3},{\"start_frame\":162,\"end_frame\":243,\"shot\":\"close-up\",\"movement\":\"static camera\",\"speed\":\"slow\",\"strength\":0.35,\"center_x\":0.5,\"center_y\":0.2}]}",
+      "source_fps": 24,
+      "edit_strength": 0.35,
+      "expected_segments": 3,
+      "lora_name": "None",
+      "lora_strength": 1,
+      "sage_enabled": false,
+      "spectrum_enabled": false,
+      "steps": 8,
+      "aspect_ratio": "source",
+      "megapixels": 0.5,
+      "custom_width": 960,
+      "custom_height": 544
+    },
+    "_meta": {
+      "title": "R2V TIMELINE DIRECTOR · UPLOAD SOURCE HERE"
+    }
+  },
+  "100": {
+    "class_type": "H3R2VCameraLipLock",
+    "inputs": {
+      "images": [
+        "90",
+        0
+      ],
+      "audio": [
+        "90",
+        1
+      ],
+      "video_info": [
+        "90",
+        3
+      ],
+      "camera_plan": [
+        "90",
+        2
+      ],
+      "segment_index": 0,
+      "segment_frames": 124,
+      "camera_plan_json": "{\n  \"segments\": [\n    {\"start_frame\": 0, \"end_frame\": 124, \"shot\": \"wide shot\", \"movement\": \"slow dolly in\", \"speed\": \"slow\", \"strength\": 0.35},\n    {\"start_frame\": 124, \"end_frame\": 248, \"shot\": \"medium shot\", \"movement\": \"smooth tracking shot\", \"speed\": \"moderate\", \"strength\": 0.45},\n    {\"start_frame\": 248, \"end_frame\": 372, \"shot\": \"close-up\", \"movement\": \"static camera\", \"speed\": \"very slow\", \"strength\": 0.20}\n  ]\n}",
+      "camera_shot": "wide shot",
+      "camera_movement": "slow dolly in",
+      "camera_speed": "slow",
+      "camera_strength": 0.35,
+      "lip_lock_strength": 0.98,
+      "source_fps": 24
+    },
+    "_meta": {
+      "title": "Source segment / camera instruction"
+    }
+  },
+  "120": {
+    "class_type": "H3R2VCameraLipLock",
+    "inputs": {
+      "images": [
+        "90",
+        0
+      ],
+      "audio": [
+        "90",
+        1
+      ],
+      "video_info": [
+        "90",
+        3
+      ],
+      "camera_plan": [
+        "90",
+        2
+      ],
+      "segment_index": 1,
+      "segment_frames": 124,
+      "camera_plan_json": "{\n  \"segments\": [\n    {\"start_frame\": 0, \"end_frame\": 124, \"shot\": \"wide shot\", \"movement\": \"slow dolly in\", \"speed\": \"slow\", \"strength\": 0.35},\n    {\"start_frame\": 124, \"end_frame\": 248, \"shot\": \"medium shot\", \"movement\": \"smooth tracking shot\", \"speed\": \"moderate\", \"strength\": 0.45},\n    {\"start_frame\": 248, \"end_frame\": 372, \"shot\": \"close-up\", \"movement\": \"static camera\", \"speed\": \"very slow\", \"strength\": 0.20}\n  ]\n}",
+      "camera_shot": "medium shot",
+      "camera_movement": "smooth tracking shot",
+      "camera_speed": "moderate",
+      "camera_strength": 0.45,
+      "lip_lock_strength": 0.98,
+      "source_fps": 24
+    },
+    "_meta": {
+      "title": "Source segment / camera instruction"
+    }
+  },
+  "130": {
+    "class_type": "H3R2VCameraLipLock",
+    "inputs": {
+      "images": [
+        "90",
+        0
+      ],
+      "audio": [
+        "90",
+        1
+      ],
+      "video_info": [
+        "90",
+        3
+      ],
+      "camera_plan": [
+        "90",
+        2
+      ],
+      "segment_index": 2,
+      "segment_frames": 124,
+      "camera_plan_json": "{\n  \"segments\": [\n    {\"start_frame\": 0, \"end_frame\": 124, \"shot\": \"wide shot\", \"movement\": \"slow dolly in\", \"speed\": \"slow\", \"strength\": 0.35},\n    {\"start_frame\": 124, \"end_frame\": 248, \"shot\": \"medium shot\", \"movement\": \"smooth tracking shot\", \"speed\": \"moderate\", \"strength\": 0.45},\n    {\"start_frame\": 248, \"end_frame\": 372, \"shot\": \"close-up\", \"movement\": \"static camera\", \"speed\": \"very slow\", \"strength\": 0.20}\n  ]\n}",
+      "camera_shot": "close-up",
+      "camera_movement": "static camera",
+      "camera_speed": "very slow",
+      "camera_strength": 0.2,
+      "lip_lock_strength": 0.98,
+      "source_fps": 24
+    },
+    "_meta": {
+      "title": "Source segment / camera instruction"
+    }
+  },
+  "200": {
+    "class_type": "ImageBatch",
+    "inputs": {
+      "image1": [
+        "240",
+        0
+      ],
+      "image2": [
+        "241",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "ASSEMBLE SEGMENTS 1 + 2"
+    }
+  },
+  "201": {
+    "class_type": "ImageBatch",
+    "inputs": {
+      "image1": [
+        "200",
+        0
+      ],
+      "image2": [
+        "242",
+        0
+      ]
+    },
+    "_meta": {
+      "title": "ASSEMBLE SEGMENTS 1 + 2 + 3"
+    }
+  },
+  "202": {
+    "class_type": "CreateVideo",
+    "inputs": {
+      "images": [
+        "201",
+        0
+      ],
+      "fps": [
+        "90",
+        4
+      ],
+      "audio": [
+        "205",
+        0
+      ],
+      "bit_depth": 8
+    },
+    "_meta": {
+      "title": "CREATE VIDEO · ORIGINAL AUDIO"
+    }
+  },
+  "203": {
+    "class_type": "SaveVideo",
+    "inputs": {
+      "video": [
+        "202",
+        0
+      ],
+      "filename_prefix": "h3_camera_2d/reframed_source",
+      "format": "auto",
+      "codec": "auto"
+    },
+    "_meta": {
+      "title": "SAVE · SOURCE AUDIO PASSTHROUGH"
+    }
+  },
+  "204": {
+    "class_type": "H3CameraAudioJoin",
+    "inputs": {
+      "audio1": [
+        "100",
+        1
+      ],
+      "audio2": [
+        "120",
+        1
+      ]
+    },
+    "_meta": {
+      "title": "Join original segment audio 1+2"
+    }
+  },
+  "205": {
+    "class_type": "H3CameraAudioJoin",
+    "inputs": {
+      "audio1": [
+        "204",
+        0
+      ],
+      "audio2": [
+        "130",
+        1
+      ]
+    },
+    "_meta": {
+      "title": "Join original segment audio 1+2+3"
+    }
+  },
+  "240": {
+    "class_type": "H3CameraReframe",
+    "inputs": {
+      "images": [
+        "100",
+        0
+      ],
+      "segment_plan": [
+        "100",
+        4
+      ],
+      "width": [
+        "90",
+        6
+      ],
+      "height": [
+        "90",
+        7
+      ]
+    },
+    "_meta": {
+      "title": "Actual 2D camera · segment 1"
+    }
+  },
+  "241": {
+    "class_type": "H3CameraReframe",
+    "inputs": {
+      "images": [
+        "120",
+        0
+      ],
+      "segment_plan": [
+        "120",
+        4
+      ],
+      "width": [
+        "90",
+        6
+      ],
+      "height": [
+        "90",
+        7
+      ]
+    },
+    "_meta": {
+      "title": "Actual 2D camera · segment 2"
+    }
+  },
+  "242": {
+    "class_type": "H3CameraReframe",
+    "inputs": {
+      "images": [
+        "130",
+        0
+      ],
+      "segment_plan": [
+        "130",
+        4
+      ],
+      "width": [
+        "90",
+        6
+      ],
+      "height": [
+        "90",
+        7
+      ]
+    },
+    "_meta": {
+      "title": "Actual 2D camera · segment 3"
+    }
+  }
+}

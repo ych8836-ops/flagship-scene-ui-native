@@ -1,0 +1,148 @@
+{
+  "settings": {
+    "model": "minimax_h3_fl2va_pruned_int8_convrot.safetensors",
+    "clip": "qwen3vl_32b_minimax_h3_int8_convrot.safetensors",
+    "video_vae": "minimax_h3_video_vae_fp16.safetensors",
+    "audio_vae": "minimax_h3_audio_vae_fp32.safetensors",
+    "turbo_lora": "minimax\\minimax_h3_fl2v_turbo_8step_v1.0_comfyui_bf16.safetensors",
+    "turbo_strength": 0.9,
+    "reference_lora": "minimax\\minimax_h3_ref_lora_layer20-49adaln_proj_rank_256_bf16.safetensors",
+    "reference_strength": 0.0,
+    "width": 576,
+    "height": 768,
+    "steps": 8,
+    "sampler": "res_multistep",
+    "scheduler": "sgm_uniform",
+    "shift_video": 12.0,
+    "shift_audio": 3.0,
+    "context_length": "22",
+    "sage": false,
+    "chunks": 2,
+    "attention_mode": "off",
+    "fp16_accumulation": false,
+    "cache_mode": "off",
+    "easycache_threshold": 0.12,
+    "spectrum_blend": 0.5,
+    "refiner": false,
+    "refiner_strength": 0.1,
+    "ref_image_size": "match",
+    "shared_prompt": "",
+    "loras": [],
+    "audio_file": "",
+    "upscale": false,
+    "scale": 2.0,
+    "memory_profile": "Auto",
+    "motion_repair": "Off",
+    "motion_repair_strength": 30,
+    "color_treatment": "Auto Natural",
+    "output_quality": 95
+  },
+  "sequence_mode": true,
+  "references": {
+    "images": [],
+    "videos": [],
+    "audios": []
+  },
+  "scenes": [
+    {
+      "id": "scene_1",
+      "name": "작업실",
+      "prompt": "Photorealistic tabletop studio. Soft diffuse daylight.",
+      "continue_previous": false,
+      "references": {
+        "images": [],
+        "videos": [],
+        "audios": []
+      }
+    },
+    {
+      "id": "scene_2",
+      "name": "전시장",
+      "prompt": "Photorealistic gallery with a dark pedestal and controlled overhead lighting.",
+      "continue_previous": false,
+      "references": {
+        "images": [],
+        "videos": [],
+        "audios": []
+      }
+    }
+  ],
+  "clips": [
+    {
+      "prompt": "subject_definitions:\n<Subject 1> is the single red ceramic cube.\n\nsummary:\nCreate one restrained photorealistic tabletop or gallery shot.\n\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - rigid cube shape and red ceramic material.\n\ndetailed_description:\nClean photorealistic footage with realistic material shading.\n[Shot 1] A single red ceramic cube rests on a pale wooden tabletop. Hold a locked medium close-up while a soft reflection moves across its surface.\n\noverall_soundscape:\nNo speech, singing, laughter, narration, ambience or sound effects.\n\nnon_diegetic_music:\nN/A",
+      "seconds": 5.0,
+      "mode": "T2V",
+      "first_image": "",
+      "last_image": "",
+      "images": [],
+      "videos": [],
+      "audios": [],
+      "use_common_references": true,
+      "seed": 4200,
+      "scene_id": "scene_1",
+      "refiner": {
+        "mode": "off",
+        "strength": 0.1,
+        "reference_clip": 1,
+        "reason": ""
+      }
+    },
+    {
+      "prompt": "subject_definitions:\n<Subject 1> is the single red ceramic cube.\n\nsummary:\nCreate one restrained photorealistic tabletop or gallery shot.\n\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - rigid cube shape and red ceramic material.\n\ndetailed_description:\nClean photorealistic footage with realistic material shading.\n[Shot 1] Continue the same cube and tabletop from the incoming frame. After the overlap, the camera slowly moves closer. Keep the cube rigid and stationary.\n\noverall_soundscape:\nNo speech, singing, laughter, narration, ambience or sound effects.\n\nnon_diegetic_music:\nN/A",
+      "seconds": 5.0,
+      "mode": "T2V",
+      "first_image": "",
+      "last_image": "",
+      "images": [],
+      "videos": [],
+      "audios": [],
+      "use_common_references": true,
+      "seed": 4201,
+      "scene_id": "scene_1",
+      "refiner": {
+        "mode": "off",
+        "strength": 0.1,
+        "reference_clip": 1,
+        "reason": ""
+      }
+    },
+    {
+      "prompt": "subject_definitions:\n<Subject 1> is the single red ceramic cube.\n\nsummary:\nCreate one restrained photorealistic tabletop or gallery shot.\n\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - rigid cube shape and red ceramic material.\n\ndetailed_description:\nClean photorealistic footage with realistic material shading.\n[Shot 1] A new independent shot: one red ceramic cube rests on a dark gallery pedestal. Establish its shape under a narrow overhead light.\n\noverall_soundscape:\nNo speech, singing, laughter, narration, ambience or sound effects.\n\nnon_diegetic_music:\nN/A",
+      "seconds": 5.0,
+      "mode": "T2V",
+      "first_image": "",
+      "last_image": "",
+      "images": [],
+      "videos": [],
+      "audios": [],
+      "use_common_references": true,
+      "seed": 4202,
+      "scene_id": "scene_2",
+      "refiner": {
+        "mode": "off",
+        "strength": 0.1,
+        "reference_clip": 1,
+        "reason": ""
+      }
+    },
+    {
+      "prompt": "subject_definitions:\n<Subject 1> is the single red ceramic cube.\n\nsummary:\nCreate one restrained photorealistic tabletop or gallery shot.\n\nretention_analysis:\n<Subject 1> (appears in [Shot 1]): fully_preserved - rigid cube shape and red ceramic material.\n\ndetailed_description:\nClean photorealistic footage with realistic material shading.\n[Shot 1] Continue the same cube and pedestal from the incoming frame. After the overlap, the camera slowly moves backward to reveal more empty gallery space.\n\noverall_soundscape:\nNo speech, singing, laughter, narration, ambience or sound effects.\n\nnon_diegetic_music:\nN/A",
+      "seconds": 5.0,
+      "mode": "T2V",
+      "first_image": "",
+      "last_image": "",
+      "images": [],
+      "videos": [],
+      "audios": [],
+      "use_common_references": true,
+      "seed": 4203,
+      "scene_id": "scene_2",
+      "refiner": {
+        "mode": "off",
+        "strength": 0.1,
+        "reference_clip": 1,
+        "reason": ""
+      }
+    }
+  ]
+}
