@@ -1,32 +1,26 @@
-# Sources and licenses
+# 제작 코드와 외부 출처
 
-This is the native ComfyUI distribution of Flagship Scene UI. Installed native UI/assets and node implementations were preserved, with one publication portability correction: optional Spectrum VAE profiling writes its permission-error fallback report to the OS temporary directory instead of a developer-specific home path. Obsolete documentation was replaced with current manual links. File hashes are recorded in the package manifest. A clean startup workflow and installation tools are provided separately. The installed production ComfyUI was not modified.
+## 이 저장소에서 배포하는 코드
 
-## Flagship components
+Flagship Scene UI의 UI·프로젝트/씬/클립 관리, 카메라·시간축 연동, 업스케일 래퍼, 얼굴 유무 가드·분할 색상 처리와 외부 노드 등록 어댑터는 Flagship / ych8836-ops가 작성한 부분입니다. [저장소](https://github.com/ych8836-ops/flagship-scene-ui-native).
 
-- Flagship Scene UI, project orchestration, sequence handling, camera adapters and restoration wrappers: ych8836-ops / Flagship. Project reference: <https://github.com/ych8836-ops/flagship-scene-ui-native>.
-- The camera static-module URL correction from 2026-10-19 is included.
-- The Git native tree excludes the protected image-upscaler binaries. The full native ZIP includes them as a separately disclosed optional component, not AGPL source.
+우리 어댑터를 원래 Motion Context·Endless·FaceRefine·CrossView 알고리즘 자체라고 주장하지 않습니다. 배포 팩별 구분은 BUNDLED_NODES.json에 있습니다. 보호 이미지 업스케일러는 Full ZIP의 기존 바이너리이며 공개 소스로 표시하지 않습니다.
 
-## Community foundations bundled with their original notices
+## 외부 구현은 별도 설치
 
-- Endless MiniMax H3 v1.5 workflow by u/embryo10: <https://www.reddit.com/r/comfyui/comments/1wt5oe9/endless_minimax_h3_with_endless_lipsync_v15_less/>
-- Motion Context by NikoDemon80: <https://github.com/NikoDemon80/ComfyUI-H3-Motion-Context>. The included Endless v1.5 registration wrapper assigns separate IDs; `UPSTREAM.md` and the original license are preserved.
-- noEmbryo nodes, AV stitching and clip refiner: <https://github.com/noembryo/ComfyUI-noEmbryo>
-- KJNodes by kijai: <https://github.com/kijai/ComfyUI-KJNodes>
-- VideoHelperSuite by Kosinkadink: <https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite>
-- H3-FaceRefine by Carasibana: <https://github.com/Carasibana/ComfyUI-H3-FaceRefine>. The bundled installed snapshot includes local compatibility/adaptor additions.
-- Spectrum by xmarre: <https://github.com/xmarre/ComfyUI-Spectrum-MiniMax-H3>. Included separately as an optional pack; not enabled by the startup workflow.
-- CrossViewWarp by cseti007 and contributors: <https://github.com/cseti007/ComfyUI-CrossViewWarp>. The camera guide includes the upstream implementation under its adjacent Apache-2.0 LICENSE and NOTICE.
-- Three.js: <https://github.com/mrdoob/three.js>. Local UI vendor assets retain their MIT notice.
-- Noto Sans KR: <https://github.com/notofonts/noto-cjk>. Local font assets retain their OFL notice.
+[EXTERNAL_NODES.md](EXTERNAL_NODES.md)에 저자·원저장소·설치 그룹이 있습니다. noEmbryo, KJNodes, VideoHelperSuite, H3-FaceRefine, Spectrum, Motion Context와 CrossView의 구현 소스를 이 배포에 넣지 않습니다. 외부 설치 도구는 사용자가 실행할 때 해당 출처에서 고정 버전을 가져옵니다.
 
-Optional additional helpers, when the selected restoration mode needs them:
+- Endless MiniMax H3 v1.5 워크플로우: u/embryo10.
+- Motion Context: NikoDemon80 및 기여자.
+- Endless AV stitcher·clip refiner: noembryo 및 기여자.
+- KJNodes: kijai 및 기여자.
+- VideoHelperSuite: Kosinkadink 및 기여자.
+- H3-FaceRefine: Carasibana 및 기여자.
+- CrossViewWarp: cseti007 및 기여자.
+- Spectrum: xmarre 및 기여자.
 
-- controlnet_aux by Fannovel16: <https://github.com/Fannovel16/comfyui_controlnet_aux>
-- YCNodes by yichengup: <https://github.com/yichengup/ComfyUI-YCNodes-MiniMax-H3>
+## UI 라이브러리·폰트
 
-Every bundled third-party component retains its own license. The top-level AGPL-3.0 license for Flagship source does not relicense MIT/Apache/OFL/GPL components or NVIDIA proprietary runtimes. Models, LoRAs, NVIDIA runtime binaries, ComfyUI engine, user projects and personal media are not bundled. Refer to each model's own terms when installing weights.
+Three.js는 MIT, Noto Sans KR은 OFL 고지를 유지합니다. 이들은 UI 표시를 위한 라이브러리·폰트이며 다른 사람의 커스텀노드 팩을 동봉한 것이 아닙니다. 자체 코드는 루트 AGPL-3.0-only, 기존 비디오 복원 소스는 인접 Apache-2.0 LICENSE를 유지합니다. 외부 노드와 모델·NVIDIA 런타임은 각각 원저자의 조건을 따릅니다.
 
-
-Git 소스판은 기본 9개 팩과 선택 Spectrum을 포함합니다. 보호된 이미지 업스케일 바이너리는 제외합니다. 별도 전체 배포 ZIP에는 기존 바이너리가 고지되어 있습니다.
+사용자 컴퓨터의 설치된 원본 ComfyUI와 대회용 앱을 이 배포 정리 과정에서 수정하지 않았습니다.

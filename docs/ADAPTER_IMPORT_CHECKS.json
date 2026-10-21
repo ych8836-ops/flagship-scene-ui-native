@@ -1,0 +1,17 @@
+{
+  "motion_aliases": [
+    "EndlessV15MiniMaxH3MotionContext",
+    "EndlessV15MiniMaxH3MotionContextLoadLatent",
+    "EndlessV15MiniMaxH3MotionContextSaveLatent",
+    "EndlessV15MiniMaxH3MotionContextTrim"
+  ],
+  "own_face_adapters": [
+    "ColorMatchLABChunked",
+    "H3FacePresence"
+  ],
+  "external_face_helpers_resolved": true,
+  "crossview_class_resolved_from_external_install": true,
+  "gpu_inference": false,
+  "full_cpu_server_smoke": "Timed out before custom-node registration; not claimed as passed. Test process stopped.",
+  "original_user_environment_modified": false
+}

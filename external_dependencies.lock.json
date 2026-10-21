@@ -1,0 +1,112 @@
+{
+  "format": 1,
+  "repositories": [
+    {
+      "id": "noembryo",
+      "repo": "noembryo/ComfyUI-noEmbryo",
+      "revision": "4289beac758c836138d3eab560cefaa5dc0f6057",
+      "url": "https://codeload.github.com/noembryo/ComfyUI-noEmbryo/zip/4289beac758c836138d3eab560cefaa5dc0f6057",
+      "sha256": "0ce8301cdec6b3a49a6e40cec94ed04f6bbeb4ad305e30346d02ce1d6585ee5a",
+      "folder": "ComfyUI-noEmbryo",
+      "feature": "core",
+      "path": "custom_nodes/ComfyUI-noEmbryo"
+    },
+    {
+      "id": "kj",
+      "repo": "kijai/ComfyUI-KJNodes",
+      "revision": "3f20054214fec9f9234fd3841ae6f1e4287948f6",
+      "url": "https://codeload.github.com/kijai/ComfyUI-KJNodes/zip/3f20054214fec9f9234fd3841ae6f1e4287948f6",
+      "sha256": "8725a0aab104160588fadcb1d794befb5d91acf34a3e94a3ee0da652313956b4",
+      "folder": "comfyui-kjnodes",
+      "feature": "core",
+      "path": "custom_nodes/comfyui-kjnodes"
+    },
+    {
+      "id": "vhs",
+      "repo": "Kosinkadink/ComfyUI-VideoHelperSuite",
+      "revision": "4d907bee61e92c2e65af3bd6383a4e4d356126d1",
+      "url": "https://codeload.github.com/Kosinkadink/ComfyUI-VideoHelperSuite/zip/4d907bee61e92c2e65af3bd6383a4e4d356126d1",
+      "sha256": "5114977eefb133c76592a5213c45ad3caa1ad7b1c2e4a77905b5ff0c48ca4363",
+      "folder": "comfyui-videohelpersuite",
+      "feature": "core",
+      "path": "custom_nodes/comfyui-videohelpersuite"
+    },
+    {
+      "id": "face",
+      "repo": "Carasibana/ComfyUI-H3-FaceRefine",
+      "revision": "79a97ce5ee4b393ce26313bd1280b706fe8b4f2c",
+      "url": "https://codeload.github.com/Carasibana/ComfyUI-H3-FaceRefine/zip/79a97ce5ee4b393ce26313bd1280b706fe8b4f2c",
+      "sha256": "9bbce77bd210bb00d5a6584f77bac79f6089de458ca8c7316ef1440fa5bb44a3",
+      "folder": "ComfyUI-H3-FaceRefine",
+      "feature": "camera",
+      "path": "custom_nodes/ComfyUI-H3-FaceRefine"
+    },
+    {
+      "id": "spectrum",
+      "repo": "xmarre/ComfyUI-Spectrum-MiniMax-H3",
+      "revision": "9dc51b7fbb6e1c5208701ed3c8494801b4754097",
+      "url": "https://codeload.github.com/xmarre/ComfyUI-Spectrum-MiniMax-H3/zip/9dc51b7fbb6e1c5208701ed3c8494801b4754097",
+      "sha256": "ead35b3222c7ef1e6c2b0614a7fdbd6a69d6350060723334a55fe9027957de7e",
+      "folder": "ComfyUI-Spectrum-MiniMax-H3",
+      "feature": "spectrum",
+      "path": "custom_nodes/ComfyUI-Spectrum-MiniMax-H3"
+    },
+    {
+      "id": "yc",
+      "repo": "yichengup/ComfyUI-YCNodes-MiniMax-H3",
+      "revision": "efbe83f69ffa97a251a575ce42edc7bf8005da0c",
+      "url": "https://codeload.github.com/yichengup/ComfyUI-YCNodes-MiniMax-H3/zip/efbe83f69ffa97a251a575ce42edc7bf8005da0c",
+      "sha256": "85cfcd7b8ea3e05fad49d5f1325e61a52926c8d4bf1db3b42cb78501085032e7",
+      "folder": "ComfyUI-YCNodes-MiniMax-H3",
+      "feature": "extra",
+      "path": "custom_nodes/ComfyUI-YCNodes-MiniMax-H3"
+    },
+    {
+      "id": "controlnet_aux",
+      "repo": "Fannovel16/comfyui_controlnet_aux",
+      "revision": "a587a4c1594524c1d2de5cd1a86cd868ff448e1c",
+      "url": "https://codeload.github.com/Fannovel16/comfyui_controlnet_aux/zip/a587a4c1594524c1d2de5cd1a86cd868ff448e1c",
+      "sha256": "3d717b853303c3c030effbb5ee23fd461ba427917b161b9340a01ea3c0341868",
+      "folder": "comfyui_controlnet_aux",
+      "feature": "repair",
+      "path": "custom_nodes/comfyui_controlnet_aux"
+    }
+  ],
+  "files": [
+    {
+      "id": "motion_nodes",
+      "url": "https://raw.githubusercontent.com/NikoDemon80/ComfyUI-H3-Motion-Context/5335715abe54c1a9bfbe3494da29aae3e8635ce3/nodes.py",
+      "path": "flagship_dependencies/motion_context/nodes.py",
+      "feature": "core",
+      "sha256": "47ff5d4f0a7b17e5ad80a8a5b9d6d4f1df7cdf4e9a910900159e4cf1afc9923d"
+    },
+    {
+      "id": "motion_layout",
+      "url": "https://raw.githubusercontent.com/NikoDemon80/ComfyUI-H3-Motion-Context/5335715abe54c1a9bfbe3494da29aae3e8635ce3/layout_contract.py",
+      "path": "flagship_dependencies/motion_context/layout_contract.py",
+      "feature": "core",
+      "sha256": "789bc211bd8196c50d95e908af33186c9aae2e11594b20c32d459d4fcea89d75"
+    },
+    {
+      "id": "motion_license",
+      "url": "https://raw.githubusercontent.com/NikoDemon80/ComfyUI-H3-Motion-Context/5335715abe54c1a9bfbe3494da29aae3e8635ce3/LICENSE",
+      "path": "flagship_dependencies/motion_context/LICENSE",
+      "feature": "core",
+      "sha256": "ca7e33c5bd9b43b42e075f33271452aefd3d61da005738fac21127a55f878d90"
+    },
+    {
+      "id": "crossview",
+      "url": "https://raw.githubusercontent.com/cseti007/ComfyUI-CrossViewWarp/3266a83a84eaa6833a9ebc38ac7cdd8789e44f5b/crossview_warp_node.py",
+      "path": "flagship_dependencies/crossview/crossview_warp_node.py",
+      "feature": "camera",
+      "sha256": "0152de7401bfa9761ccb602ec933efd9244a599a1914dca370e94c4374d7abfa"
+    },
+    {
+      "id": "crossview_license",
+      "url": "https://raw.githubusercontent.com/cseti007/ComfyUI-CrossViewWarp/3266a83a84eaa6833a9ebc38ac7cdd8789e44f5b/LICENSE",
+      "path": "flagship_dependencies/crossview/LICENSE",
+      "feature": "camera",
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30"
+    }
+  ]
+}

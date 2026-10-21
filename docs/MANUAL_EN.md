@@ -164,4 +164,4 @@ View nodes exposes the selected clip's execution graph, unlike the scene map. In
 
 [Korean image](images/27-installation_ko.png)
 
-Point the native installer at a compatible ComfyUI containing main.py. Existing packs cause a preflight refusal. Install dependencies in that Comfy Python, download weights separately and select actual filenames. The clean workflow contains no personal media. Git source excludes the protected image-upscaler binary; the full native ZIP discloses it separately. Neither bundle includes weights or NVIDIA runtimes.
+Install.cmd asks for ComfyUI and copies only Flagship code. Install external custom nodes separately from their attributed sources or the explicit dependency tool. Existing packs are not overwritten. Models, Python dependencies and NVIDIA runtimes are separate. The protected image-upscaler binary is only in the Full ZIP.

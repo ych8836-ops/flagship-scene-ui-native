@@ -23,12 +23,12 @@ def install(comfy, *, spectrum=False, dry_run=False):
         source = (ROOT / relative).resolve()
         if not source.is_relative_to(ROOT) or not source.is_file() or checksum(source) != expected:
             raise ValueError('Package integrity check failed: ' + relative)
-    for folder in ['custom_nodes'] + (['optional_custom_nodes'] if spectrum else []):
+    for folder in ['custom_nodes']:
         for path in (ROOT / folder).rglob('*'):
-            if path.is_file() and path.relative_to(ROOT).as_posix() not in manifest:
+            if path.is_file() and '__pycache__' not in path.parts and path.suffix != '.pyc' and path.relative_to(ROOT).as_posix() not in manifest:
                 raise ValueError('Unlisted node file in package: ' + str(path.relative_to(ROOT)))
     operations = []
-    for folder in ['custom_nodes'] + (['optional_custom_nodes'] if spectrum else []):
+    for folder in ['custom_nodes']:
         for source in sorted((ROOT / folder).iterdir()):
             if not source.is_dir():
                 continue
@@ -47,20 +47,21 @@ def install(comfy, *, spectrum=False, dry_run=False):
         if target.exists():
             raise ValueError('Workflow already exists; nothing installed: ' + str(target))
         operations.append((source, target))
-    report = {'comfy': str(comfy), 'dry_run': dry_run, 'spectrum': spectrum,
+    report = {'comfy': str(comfy), 'dry_run': dry_run, 'external_nodes_bundled': False,
+              'spectrum_install_hint': 'Use tools/install_external_nodes.py --features spectrum' if spectrum else None,
               'destinations': [str(target) for source, target in operations],
               'python_packages_installed': False, 'models_downloaded': False, 'server_started': False}
     if not dry_run:
         for source, target in operations:
             target.parent.mkdir(parents=True, exist_ok=True)
             if source.is_dir():
-                shutil.copytree(source, target)
+                shutil.copytree(source, target, ignore=shutil.ignore_patterns('__pycache__', '*.pyc'))
             else:
                 shutil.copy2(source, target)
         for source, target in operations:
             paths = source.rglob('*') if source.is_dir() else [source]
             for path in paths:
-                if path.is_file():
+                if path.is_file() and '__pycache__' not in path.parts and path.suffix != '.pyc':
                     copied = target / path.relative_to(source) if source.is_dir() else target
                     if checksum(path) != checksum(copied):
                         raise OSError('Installed file verification failed: ' + str(copied))

@@ -8,3 +8,4 @@ opencv-python
 ultralytics
 scipy
 # InsightFace, SageAttention and local Whisper are feature-specific; see INSTALL_KO.md.
+kornia

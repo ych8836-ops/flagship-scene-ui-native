@@ -1,6 +1,0 @@
-CrossViewWarp by cseti007 and its upstream contributors.
-Source: https://github.com/cseti007/ComfyUI-CrossViewWarp
-Pinned commit: 3266a83a84eaa6833a9ebc38ac7cdd8789e44f5b
-crossview_warp_node.py is included unmodified under Apache License 2.0.
-The adjacent LICENSE contains the upstream license.
-Flagship's separate crossview_guide.py only adapts local geometry and timing inputs.

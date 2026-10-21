@@ -1,0 +1,17 @@
+--- a/nodes.py
++++ b/nodes.py
+@@ -74,9 +74,13 @@
+     # ComfyUI's models/insightface. InsightFace wants the directory CONTAINING a
+     # "models" folder, and downloads the pack there on first use if it is absent.
+     root = os.path.join(getattr(folder_paths, "models_dir", "models"), "insightface")
++    # Identity matching is only consulted on ambiguous multi-face frames. Keep it
++    # on CPU so CUDA-major mismatches in an otherwise healthy ComfyUI environment
++    # cannot produce provider-load errors. The expensive H3 and YOLO work still
++    # runs through PyTorch on the GPU.
+     app = insightface.app.FaceAnalysis(
+         name=pack, root=root, allowed_modules=["detection", "recognition"],
+-        providers=["CUDAExecutionProvider", "CPUExecutionProvider"])
++        providers=["CPUExecutionProvider"])
+     app.prepare(ctx_id=0, det_size=(640, 640))
+     _REC_CACHE[pack] = app
+     return app

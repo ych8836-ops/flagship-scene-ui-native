@@ -1,10 +1,20 @@
 {
-  "separate_native_repository": true,
-  "no_sdk_app_or_sdk_event_module": true,
-  "native_runtime_files_checked": 202,
-  "manual_local_links": 71,
-  "korean_feature_images": 27,
-  "assembly_and_install_guides_native_only": true,
-  "source_model_and_nvidia_binaries_excluded": true,
-  "installed_comfy_modified": false
+  "own_code_packs": [
+    "ComfyUI-Endless-H3-AllInOne",
+    "ComfyUI-Endless-H3-v15-Context",
+    "ComfyUI-Flagship-Camera-Guide",
+    "ComfyUI-Flagship-Face-Adapters",
+    "ComfyUI-H3-R2V-CameraLipLock",
+    "ComfyUI-RTX-Video-Restoration"
+  ],
+  "external_node_implementations_bundled": false,
+  "python_sources_parsed": 43,
+  "local_doc_links_checked": 47,
+  "external_sources_downloaded_into_isolated_fixture_only": 10,
+  "upstream_archive_checksums_verified": true,
+  "tampered_cache_refused": true,
+  "missing_external_context_explained": true,
+  "user_comfy_modified": false,
+  "contest_app_modified": false,
+  "new_gpu_inference": false
 }

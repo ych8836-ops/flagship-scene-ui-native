@@ -14,3 +14,5 @@ __pycache__/
 *.wav
 *.mov
 node_modules/
+flagship_dependencies/
+external_cache/

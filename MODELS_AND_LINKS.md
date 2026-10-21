@@ -35,7 +35,7 @@ NVIDIA 배포 조건과 GPU/드라이버 요구사항을 확인하고 별도로 
 
 ## 외부 노드 링크
 
-핵심 외부 노드는 소스 스냅샷을 함께 포함하지만, 누락·재설치·출처 확인용 링크를 남깁니다.
+외부 커스텀노드는 동봉하지 않습니다. 아래 출처에서 별도 설치합니다. 자세한 버전·설치 방법은 [EXTERNAL_NODES.md](EXTERNAL_NODES.md)를 확인합니다.
 
 - <https://github.com/NikoDemon80/ComfyUI-H3-Motion-Context>
 - <https://github.com/noembryo/ComfyUI-noEmbryo>
@@ -47,7 +47,7 @@ NVIDIA 배포 조건과 GPU/드라이버 요구사항을 확인하고 별도로 
 - 선택 복원 보조: <https://github.com/Fannovel16/comfyui_controlnet_aux>
 - 선택 추가 H3 도구: <https://github.com/yichengup/ComfyUI-YCNodes-MiniMax-H3>
 
-동봉 컨텍스트 어댑터의 `EndlessV15...` 노드명은 일반 Motion Context만 새로 설치했다고 생기는 이름이 아닙니다. 함께 제공된 어댑터를 유지합니다. 외부 저장소 최신본을 무조건 덮어쓰면 현재 스냅샷과 API가 달라질 수 있습니다.
+우리 등록 어댑터의 `EndlessV15...` 노드명은 일반 Motion Context만 새로 설치했다고 생기는 이름이 아닙니다. 함께 제공된 어댑터를 유지합니다. 외부 저장소 최신본을 무조건 덮어쓰면 현재 스냅샷과 API가 달라질 수 있습니다.
 
 
 Git 소스판은 기본 9개 팩과 선택 Spectrum을 포함합니다. 보호된 이미지 업스케일 바이너리는 제외합니다. 별도 전체 배포 ZIP에는 기존 바이너리가 고지되어 있습니다.
