@@ -2,6 +2,41 @@
 
 아래 프로젝트의 구현은 이 저장소나 배포 ZIP에 **동봉하지 않습니다**. 원저장소의 출처와 라이선스를 따르며 사용자가 별도 설치합니다. 우리 코드는 해당 노드의 연결·UI·상태 관리를 담당합니다.
 
+## 설치 링크와 용도
+
+| 외부 프로젝트 | 설치 링크 | 사용하는 기능 | 설치 위치·방식 |
+| --- | --- | --- | --- |
+| noEmbryo | [원저장소·설치 안내](https://github.com/noembryo/ComfyUI-noEmbryo#readme) | Endless 합치기·클립 리파이너 | `ComfyUI/custom_nodes/ComfyUI-noEmbryo` |
+| KJNodes | [원저장소·설치 안내](https://github.com/kijai/ComfyUI-KJNodes#readme) | Attention·메모리 분할 등 선택 최적화 | `ComfyUI/custom_nodes/comfyui-kjnodes` |
+| VideoHelperSuite | [원저장소·설치 안내](https://github.com/Kosinkadink/ComfyUI-VideoHelperSuite#readme) | 참고 영상 로딩 | `ComfyUI/custom_nodes/comfyui-videohelpersuite` |
+| H3-FaceRefine | [원저장소·설치 안내](https://github.com/Carasibana/ComfyUI-H3-FaceRefine#readme) | 선택 얼굴 추적·크롭·스티치 | `ComfyUI/custom_nodes/ComfyUI-H3-FaceRefine` |
+| Spectrum | [원저장소·설치 안내](https://github.com/xmarre/ComfyUI-Spectrum-MiniMax-H3#readme) | Spectrum을 켤 때만 필요 | `ComfyUI/custom_nodes/ComfyUI-Spectrum-MiniMax-H3` |
+| H3 Motion Context | [원저장소·설치 안내](https://github.com/NikoDemon80/ComfyUI-H3-Motion-Context#readme) | 앞 클립 AV 컨텍스트·저장/불러오기 | 이 배포의 어댑터용 파일은 아래 설치 도구로 `ComfyUI/flagship_dependencies/motion_context`에 배치 |
+| CrossViewWarp | [원저장소·설치 안내](https://github.com/cseti007/ComfyUI-CrossViewWarp#readme) | 해당 카메라 모드의 깊이 기반 참고 생성 | 이 배포의 어댑터용 파일은 아래 설치 도구로 `ComfyUI/flagship_dependencies/crossview`에 배치 |
+
+ComfyUI-Manager로 일반 팩을 설치하거나 각 원저장소의 설치 안내를 따릅니다. Motion Context·CrossView는 **전체 팩을 설치하는 것과 우리 어댑터가 읽는 연결 파일을 배치하는 것이 다릅니다.** 아래 도구를 쓰면 이 배포에 필요한 파일을 지정 경로에 배치합니다. 전체 원팩의 초기화 코드를 우리 배포에 복사하지 않습니다.
+
+## 이 배포와 맞는 버전으로 별도 설치
+
+원본 배포 패키지의 루트에서 실행합니다. ComfyUI 경로는 사용자 환경에 맞게 바꿉니다. `--comfy`를 생략하면 위치를 물어봅니다.
+
+```powershell
+# 먼저 설치 대상과 다운로드 출처만 확인
+python tools/install_external_nodes.py --comfy "D:\ComfyUI_portable\ComfyUI" --features core camera --dry-run
+
+# 기본 연결·합치기와 카메라 의존성 설치
+python tools/install_external_nodes.py --comfy "D:\ComfyUI_portable\ComfyUI" --features core camera
+
+# Spectrum을 사용할 때만 별도 설치
+python tools/install_external_nodes.py --comfy "D:\ComfyUI_portable\ComfyUI" --features spectrum
+```
+
+사용자가 실행할 때 원 출처에서 다운로드하고 SHA256을 확인합니다. 기존 다른 버전은 자동 덮어쓰지 않습니다. Python 패키지·모델은 이 도구가 설치하지 않으므로 각 외부 노드의 requirements와 모델 안내도 확인합니다. 모든 작업이 끝난 후 ComfyUI를 재시작합니다.
+
+자세한 전체 순서는 [원본판 설치 안내](https://github.com/ych8836-ops/flagship-scene-ui-native/blob/main/INSTALL_KO.md)를 확인하세요.
+
+## 고정 버전 출처
+
 | 설치 그룹 | 프로젝트 | 원 출처 |
 | --- | --- | --- |
 | core | ComfyUI-noEmbryo | [원저장소](https://github.com/noembryo/ComfyUI-noEmbryo) · [고정 버전](https://github.com/noembryo/ComfyUI-noEmbryo/tree/4289beac758c836138d3eab560cefaa5dc0f6057) |
